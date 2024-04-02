@@ -1,0 +1,86 @@
+#vision h1 {
+  font-family: "Nimbus Sans L Bold";
+  font-size: 4em;
+  font-weight: 50;
+  color: rgba(51, 51, 51, 0.5);
+  text-align: center;
+  letter-spacing: normal;
+  margin-top: 30px;
+  margin-bottom: 20px;
+}
+h2 {
+  font-family: "FreeSans Bold";
+  font-size: 2.5em;
+  color: green;
+  text-align: left;
+  letter-spacing: normal;
+  margin-top: 70px;
+  margin-bottom: 20px;
+  margin-left: 20px;
+}
+#team {
+  display: flex;
+  justify-content: space-around;
+  padding: 20px;
+  background-color: #f8f8f8; 
+}
+
+.team-member {
+  background-color: white; 
+  padding: 20px;
+  margin: 10px;
+  box-shadow: 0 6px 9px rgba(0, 0, 0, 0.5); 
+  width: 250px; 
+  text-align: center;
+  border-radius: 10px; 
+}
+
+.team-member-photo {
+  width: 100px; 
+  height: 100px; 
+  margin-bottom: 10px;
+  border-radius: 50%; 
+}
+
+h3 {
+  margin-top: 0;
+}
+
+.role {
+  font-weight: bold;
+  color: #333; 
+}
+
+.navbar {
+    margin-top: 10px;
+    background-color: #333;
+    overflow: hidden;
+  }
+  
+  .nav-links {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: space-around;
+  }
+  
+  .nav-item {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+  }
+  
+  .nav-item:hover {
+    background-color: #ddd;
+    color: black;
+  }
+  
+  /* Responsive adjustments */
+  @media screen and (max-width: 600px) {
+    .nav-links {
+      flex-direction: column;
+    }
+  }
