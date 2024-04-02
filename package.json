@@ -1,7 +1,10 @@
 {
   "devDependencies": {
-    "html-validate": "^8.18.1",
-    "http-server": "^14.1.1",
-    "prettier": "^3.2.5"
+    "html-validate": "^0.18.1",
+    "http-server": "^0.14.1",
+    "prettier": "^2.5"
+  },
+  "scripts": {
+    "milestone-01": "http-server src/docs/milestone-01 -p 3000 -c-1 -o -s"
   }
 }
