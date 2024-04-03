@@ -1,17 +1,22 @@
+body {
+  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  line-height: 1.6;
+  color: #333;
+  background: #100f0f;
+}
+
 #vision h1 {
-  font-family: "Nimbus Sans L Bold";
   font-size: 4em;
   font-weight: 50;
-  color: rgba(51, 51, 51, 0.5);
+  color: rgba(255, 255, 255, 0.5);
   text-align: center;
   letter-spacing: normal;
   margin-top: 30px;
   margin-bottom: 20px;
 }
 h2 {
-  font-family: "FreeSans Bold";
   font-size: 2.5em;
-  color: green;
+  color: rgba(255, 255, 255, 0.5);
   text-align: left;
   letter-spacing: normal;
   margin-top: 70px;
@@ -22,7 +27,7 @@ h2 {
   display: flex;
   justify-content: space-around;
   padding: 20px;
-  background-color: #f8f8f8;
+  background-color: #333131;
 }
 
 .team-member {
@@ -83,4 +88,16 @@ h3 {
   .nav-links {
     flex-direction: column;
   }
+}
+section.content{
+margin-left: 24px;
+} 
+.subject-header{
+  font-size: 34;
+  font-weight: 34; 
+  text-align: left; 
+  margin-left: 16px; 
+  color: rgba(243, 246, 243, 0.5); 
+  margin-bottom: 10px;
+  margin-top: 10px;
 }
