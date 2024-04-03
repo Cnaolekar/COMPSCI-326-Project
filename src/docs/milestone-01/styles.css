@@ -58,8 +58,10 @@ h3 {
 
 .navbar {
   margin-top: 10px;
-  background-color: #333;
+  background-color: #faf7f7;
   overflow: hidden;
+
+  
 }
 
 .nav-links {
@@ -72,10 +74,11 @@ h3 {
 
 .nav-item {
   display: block;
-  color: white;
+  color: rgb(12, 12, 12);
   text-align: center;
   padding: 14px 16px;
   text-decoration: none;
+  font-size: 1.5em;
 }
 
 .nav-item:hover {
@@ -83,7 +86,6 @@ h3 {
   color: black;
 }
 
-/* Responsive adjustments */
 @media screen and (max-width: 600px) {
   .nav-links {
     flex-direction: column;
@@ -102,21 +104,16 @@ section.content {
   margin-bottom: 10px;
   margin-top: 10px;
 }
-/* General styles for the wireframes section */
+
 #wire-frames {
-  max-width: 1200px;
+  max-width: 1500px;
   margin: 0 auto;
   padding: 20px;
+ 
 }
 
-/* Title for the wireframes section */
-#wire-frames h2 {
-  text-align: center;
-  font-size: 2em;
-  margin-bottom: 30px;
-}
 
-/* Styles for individual wireframe containers */
+
 .wireframe {
   margin-bottom: 50px;
   background: #f9f9f9;
@@ -125,31 +122,29 @@ section.content {
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
 
-/* Styles for the images of the wireframes */
 .wireframe img {
-  max-width: 50%;
+  
+  max-width: 60%;
   height: auto;
   display: block;
   margin: 0 auto 20px;
   border-radius: 4px;
 }
 
-/* Paragraph text styles within the wireframe containers */
+
 .wireframe p {
-  font-size: 1em;
+  font-size: 1.25em;
   line-height: 1.6;
   color: #333;
 }
 
-/* Responsive design: On smaller screens, the text might need to be smaller */
+
+
 @media (max-width: 768px) {
   #wire-frames {
     padding: 10px;
   }
 
-  #wire-frames h2 {
-    font-size: 1.5em;
-  }
 
   .wireframe p {
     font-size: 0.9em;
@@ -172,4 +167,9 @@ color: #ddd;
   width: 100px;
   height: 10px;
 }
+}
+p{
+  font-size: 1.25em;
+  margin-left: 20px;
+  color: rgb(156, 152, 152);
 }
