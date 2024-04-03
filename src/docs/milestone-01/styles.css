@@ -90,14 +90,20 @@ h3 {
   }
 }
 section.content{
-margin-left: 24px;
+margin-left: 24px; 
+color: #ddd;
 } 
 .subject-header{
-  font-size: 34;
-  font-weight: 34; 
+  font-size: 50px;
+  font-weight: 34px; 
   text-align: left; 
   margin-left: 16px; 
   color: rgba(243, 246, 243, 0.5); 
   margin-bottom: 10px;
   margin-top: 10px;
+} 
+
+#videoDiv {
+  width: 100px;
+  height: 10px;
 }
