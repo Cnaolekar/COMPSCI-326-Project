@@ -1,5 +1,5 @@
 body {
-  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
   line-height: 1.6;
   color: #333;
   background: #100f0f;
@@ -89,15 +89,87 @@ h3 {
     flex-direction: column;
   }
 }
+section.content {
+  margin-left: 24px; 
+  margin-top: 20px;
+}
+.subject-header {
+  font-size: 34;
+  font-weight: 34;
+  text-align: left;
+  margin-left: 16px;
+  color: rgba(243, 246, 243, 0.5);
+  margin-bottom: 10px;
+  margin-top: 10px;
+}
+/* General styles for the wireframes section */
+#wire-frames {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+/* Title for the wireframes section */
+#wire-frames h2 {
+  text-align: center;
+  font-size: 2em;
+  margin-bottom: 30px;
+}
+
+/* Styles for individual wireframe containers */
+.wireframe {
+  margin-bottom: 50px;
+  background: #f9f9f9;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+/* Styles for the images of the wireframes */
+.wireframe img {
+  max-width: 50%;
+  height: auto;
+  display: block;
+  margin: 0 auto 20px;
+  border-radius: 4px;
+}
+
+/* Paragraph text styles within the wireframe containers */
+.wireframe p {
+  font-size: 1em;
+  line-height: 1.6;
+  color: #333;
+}
+
+/* Responsive design: On smaller screens, the text might need to be smaller */
+@media (max-width: 768px) {
+  #wire-frames {
+    padding: 10px;
+  }
+
+  #wire-frames h2 {
+    font-size: 1.5em;
+  }
+
+  .wireframe p {
+    font-size: 0.9em;
+  }
 section.content{
-margin-left: 24px;
+margin-left: 24px; 
+color: #ddd;
 } 
 .subject-header{
-  font-size: 34;
-  font-weight: 34; 
+  font-size: 50px;
+  font-weight: 34px; 
   text-align: left; 
   margin-left: 16px; 
   color: rgba(243, 246, 243, 0.5); 
   margin-bottom: 10px;
   margin-top: 10px;
+} 
+
+#videoDiv {
+  width: 100px;
+  height: 10px;
+}
 }
