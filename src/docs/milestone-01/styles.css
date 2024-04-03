@@ -60,8 +60,6 @@ h3 {
   margin-top: 10px;
   background-color: #faf7f7;
   overflow: hidden;
-
-  
 }
 
 .nav-links {
@@ -92,7 +90,7 @@ h3 {
   }
 }
 section.content {
-  margin-left: 24px; 
+  margin-left: 24px;
   margin-top: 20px;
 }
 .subject-header {
@@ -109,10 +107,7 @@ section.content {
   max-width: 1500px;
   margin: 0 auto;
   padding: 20px;
- 
 }
-
-
 
 .wireframe {
   margin-bottom: 50px;
@@ -123,7 +118,6 @@ section.content {
 }
 
 .wireframe img {
-  
   max-width: 60%;
   height: auto;
   display: block;
@@ -131,44 +125,40 @@ section.content {
   border-radius: 4px;
 }
 
-
 .wireframe p {
   font-size: 1.25em;
   line-height: 1.6;
   color: #333;
 }
 
-
-
 @media (max-width: 768px) {
   #wire-frames {
     padding: 10px;
   }
 
-
   .wireframe p {
     font-size: 0.9em;
   }
-section.content{
-margin-left: 24px; 
-color: #ddd;
-} 
-.subject-header{
-  font-size: 50px;
-  font-weight: 34px; 
-  text-align: left; 
-  margin-left: 16px; 
-  color: rgba(243, 246, 243, 0.5); 
-  margin-bottom: 10px;
-  margin-top: 10px;
-} 
+  section.content {
+    margin-left: 24px;
+    color: #ddd;
+  }
+  .subject-header {
+    font-size: 50px;
+    font-weight: 34px;
+    text-align: left;
+    margin-left: 16px;
+    color: rgba(243, 246, 243, 0.5);
+    margin-bottom: 10px;
+    margin-top: 10px;
+  }
 
-#videoDiv {
-  width: 100px;
-  height: 10px;
+  #videoDiv {
+    width: 100px;
+    height: 10px;
+  }
 }
-}
-p{
+p {
   font-size: 1.25em;
   margin-left: 20px;
   color: rgb(156, 152, 152);

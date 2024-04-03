@@ -9,4 +9,6 @@
     "validate-html": "html-validate src/**/*.html",
     "prettier": "prettier --write 'src/**/*.{html,js,css}'"
   }
+
+
 }
