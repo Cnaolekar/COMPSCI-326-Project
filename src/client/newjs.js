@@ -1,3 +1,4 @@
+
 const newdb = new PouchDB('enrollments');
 
 const classData = [

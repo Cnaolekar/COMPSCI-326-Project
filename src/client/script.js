@@ -302,4 +302,4 @@ async function updateProductDisplay(products) {
 
 
 
-    
+
