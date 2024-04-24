@@ -1,7 +1,7 @@
 {
   "devDependencies": {
     "html-validate": "^0.18.1",
-    "http-server": "^0.14.1",
+    "http-server": "^14.0.0",
     "prettier": "^2.5"
   },
   "scripts": {
@@ -9,7 +9,9 @@
     "milestone-02": "http-server src/client -p 3000 -c-1 -o -s",
     "validate-html": "html-validate src/**/*.html",
     "prettier": "prettier --write 'src/**/*.{html,js,css}'"
+  },
+  "dependencies": {
+    "pouchdb": "^8.0.1",
+    "pouchdb-find": "^8.0.1"
   }
-
-
 }
