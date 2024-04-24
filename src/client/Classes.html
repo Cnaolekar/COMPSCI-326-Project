@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Your Site Name</title>
+  <script src="scrip1.js" defer></script>
+  <link href="classesstyle.css" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/pouchdb@7.1.1/dist/pouchdb.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/pouchdb-find@7.1.1/dist/pouchdb-find.min.js"></script>
+
+</head>
+<body>
+  <nav class="navbar">
+    <div class="site-name">U-FIT</div>
+    <div class="nav-links">
+      <a href="#" class="nav-link">Page</a>
+      <a href="#" class="nav-link">Page</a>
+      <a href="#" class="nav-link">Page</a>
+      <button class="nav-button">Profile</button>
+    </div>
+  </nav>
+  <main>
+    <section class="group-fitness-section">
+      <h2 class="section-title">Group Fitness Classes</h2>
+      <p class="section-subtitle">Feel better, move better, eat better!</p>
+    
+      <div class="filters-container">
+        <!-- Class Filter -->
+        <div class="filter-class">
+          <h3>Class</h3>
+          <select name="category" id="category">
+            <option value="">Select your category</option>
+            <option value="zumba">Zumba</option>
+            <option value="pilates">Pilates</option>
+            <option value="yoga">Yoga</option>
+            <option value="boxing">Boxing</option>
+            <option value="fitness">Fitness</option>
+            <!-- Categories options -->
+          </select>
+          <select name="day" id="day">
+            <option value="">Select Day</option>
+            <option value="zumba">Monday</option>
+            <option value="pilates">Tuesday</option>
+            <option value="yoga">Wednesday</option>
+            <option value="boxing">Thursday</option>
+            <option value="fitness"></option>
+            <!-- Categories options -->
+          </select>
+          <button type="submit">Search</button>
+        </div>
+      </div>
+  
+      <div class="class-grid">
+        <!-- Individual class cards -->
+        <div class="class-card" data-category="zumba">
+          <img src="/Users/chinmay/Downloads/Homepage/zumba-fatcamera-c9d4ee824a0f4fda883484f878abc8ae.jpg" alt="Zumba and Core" class="class-image">
+          <h3 class="class-title">Zumba and Core</h3>
+          <p class="class-description">Description</p>
+        </div>
+        <div class="class-card" data-category="boxing">
+          <img src="/Users/chinmay/Downloads/Homepage/feature-image_8fe9c007-78d4-4a6e-b08c-20692f4b84b0.webp" alt="Full Body Fitness" class="class-image">
+          <h3 class="class-title">Full Body Fitness</h3>
+          <p class="class-description">Description</p>
+        </div>
+        <div class="class-card" data-category="pilates">
+          <img src="/Users/chinmay/Downloads/Homepage/REFORMER-PILATES.jpg" alt="Pilates" class="class-image">
+          <h3 class="class-title">Pilates</h3>
+          <p class="class-description">Description</p>
+        </div>
+        <div class="class-card" data-category="yoga">
+          <img src="/Users/chinmay/Downloads/Homepage/women-with-dumbbells.webp" alt="Strength and HIIT" class="class-image">
+          <h3 class="class-title">Strength and HIIT</h3>
+          <p class="class-description">Description</p>
+        </div>
+        <div class="class-card hidden" data-category="zumba">
+            <img src="/Users/chinmay/Downloads/Homepage/zumba-fatcamera-c9d4ee824a0f4fda883484f878abc8ae.jpg" alt="Zumba and Core" class="class-image">
+            <h3 class="class-title">Zumba and Core</h3>
+            <p class="class-description">Description</p>
+        </div>
+        <div class="class-card hidden" data-category="pilates">
+            <img src="/Users/chinmay/Downloads/Homepage/zumba-fatcamera-c9d4ee824a0f4fda883484f878abc8ae.jpg" alt="Zumba and Core" class="class-image">
+            <h3 class="class-title">Zumba and Core</h3>
+            <p class="class-description">Description</p>
+        </div>
+        <div class="class-card hidden" data-category="fitness">
+            <img src="/Users/chinmay/Downloads/Homepage/zumba-fatcamera-c9d4ee824a0f4fda883484f878abc8ae.jpg" alt="Zumba and Core" class="class-image">
+            <h3 class="class-title">Zumba and Core</h3>
+            <p class="class-description">Description</p>
+        </div>
+        <div class="class-card hidden" data-category="zumba">
+            <img src="/Users/chinmay/Downloads/Homepage/zumba-fatcamera-c9d4ee824a0f4fda883484f878abc8ae.jpg" alt="Zumba and Core" class="class-image">
+            <h3 class="class-title">Zumba and Core</h3>
+            <p class="class-description">Description</p>
+        </div>
+        <div class="class-card hidden" data-category="fitness">
+            <img src="/Users/chinmay/Downloads/Homepage/zumba-fatcamera-c9d4ee824a0f4fda883484f878abc8ae.jpg" alt="Zumba and Core" class="class-image">
+            <h3 class="class-title">Zumba and Core</h3>
+            <p class="class-description">Description</p>
+        </div>
+        <div class="class-card hidden" data-category="boxing">
+            <img src="/Users/chinmay/Downloads/Homepage/zumba-fatcamera-c9d4ee824a0f4fda883484f878abc8ae.jpg" alt="Zumba and Core" class="class-image">
+            <h3 class="class-title">Zumba and Core</h3>
+            <p class="class-description">Description</p>
+        </div>
+        <div class="class-card hidden" data-category="pilates">
+            <img src="/Users/chinmay/Downloads/Homepage/zumba-fatcamera-c9d4ee824a0f4fda883484f878abc8ae.jpg" alt="Zumba and Core" class="class-image">
+            <h3 class="class-title">Zumba and Core</h3>
+            <p class="class-description">Description</p>
+        </div>
+        <div class="class-card hidden" data-category="yoga">
+            <img src="/Users/chinmay/Downloads/Homepage/zumba-fatcamera-c9d4ee824a0f4fda883484f878abc8ae.jpg" alt="Zumba and Core" class="class-image">
+            <h3 class="class-title">Zumba and Core</h3>
+            <p class="class-description">Description</p>
+        </div>
+      </div>
+  
+      <!-- <div class="see-more">
+        <a href="#" class="see-more-link">See More</a>
+      </div> -->
+      <div class="pagination">
+        <span class="page-number">1</span>
+        <span class="page-number">2</span>
+        <span class="page-number">3</span>
+      </div>
+      
+    </section>
+  </main>  
+    <footer class="footer">
+      <div class="footer-content">
+        <div class="footer-section footer-section-social">
+          <div class="site-name">Site name</div>
+          <div class="social-icons">
+            <a href="#" class="social-icon"><i class="fab fa-facebook-f"></i></a>
+            <a href="#" class="social-icon"><i class="fab fa-linkedin-in"></i></a>
+            <a href="#" class="social-icon"><i class="fab fa-youtube"></i></a>
+            <a href="#" class="social-icon"><i class="fab fa-instagram"></i></a>
+          </div>
+        </div>
+        <div class="footer-section footer-section-links">
+          <div class="footer-column">
+            <div class="footer-topic">Topic</div>
+            <a href="#" class="footer-link">Page</a>
+            <a href="#" class="footer-link">Page</a>
+            <a href="#" class="footer-link">Page</a>
+          </div>
+        </div>
+        <div class="footer-section footer-section-info">
+        </div>
+      </div>
+    </footer>
+</body>
+</html>

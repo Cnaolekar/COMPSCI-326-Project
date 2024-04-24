@@ -1,0 +1,404 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;700&display=swap');
+
+body, h1, p, a, button {
+  margin: 0;
+  padding: 0;
+  font-family: 'Inter', sans-serif;
+}
+
+.navbar {
+background-color: #ffffff; /* light gray */
+padding: 1rem 2rem;
+height: 125px;
+display: flex;
+justify-content: space-between;
+align-items: center;
+}
+
+.site-name {
+font-weight: medium;
+font-size: 20px;
+}
+
+.nav-links {
+display: flex;
+gap: 2rem;
+}
+
+.nav-link {
+color: #000000; /* gray-700 */
+padding-top: 2%;
+text-decoration: none;
+font-weight: medium;
+font-size: 20px;
+}
+
+.nav-link:hover {
+color: #111827; /* darker gray */
+}
+
+.nav-button {
+background-color: #000000; /* blue-500 */
+color: white;
+padding: 0.5rem 1rem;
+border: none;
+border-radius: 0.375rem;
+cursor: pointer;
+font-size: 20px;
+}
+
+.nav-button:hover {
+    background-color: #2563eb; /* darker blue */
+}
+
+.hero-section {
+    position: relative;
+    height: 750px; /* Fixed height for the hero section */
+    color: white;
+    display: flex;
+    align-items: center; /* Center content vertically */
+    justify-content: left;
+    overflow: hidden; /* Ensures no image overflow */
+}
+
+.hero-image {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+  
+.hero-content {
+    margin-left: 5%;
+    position: relative;
+    max-width: 600px;
+    padding: 15px;
+    text-align: left;
+    z-index: 10; /* Ensure the content is above the background image */
+}
+
+.hero-subtitle {
+  font-size: 1rem;
+  font-weight: 400;
+  margin-bottom: 0.5em;
+}
+
+.hero-title {
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin-bottom: 1em;
+}
+
+.hero-description {
+  font-size: 1rem;
+  font-weight: 400;
+  margin-bottom: 1.5em;
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.hero-buttons {
+  display: flex;
+  justify-content: left;
+  gap: 15px;
+}
+
+.button-primary, .button-secondary {
+  text-transform: uppercase;
+  font-weight: 700;
+  padding: 10px 20px;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  border-radius: 6px;
+}
+
+.button-primary {
+  background-color: #ffffff;
+  color: black;
+}
+
+.button-secondary {
+  background-color: transparent;
+  color: white;
+  border: 2px solid white;
+}
+
+.button-primary:hover {
+  background-color: #111;
+  color: white;
+}
+
+.button-secondary:hover {
+  background-color: white;
+  color: #000;
+}
+@media (max-width: 768px) {
+  .hero-title {
+    font-size: 1.75rem;
+  }
+  .hero-description {
+    font-size: 0.875rem;
+  }
+  .hero-buttons {
+    flex-direction: column;
+  }
+}
+
+.features-section {
+    padding: 40px 0;
+    background-color: #ffffff; /* gray-200 equivalent */
+  }
+  
+  .container {
+    max-width: 1200px;
+    height: 450px;
+    margin: 0 auto;
+    padding: 0 15px;
+  }
+  
+  .features-header {
+    text-align: center;
+    margin-bottom: 30px;
+  }
+  
+  .features-title {
+    font-family: 'Inter', sans-serif;
+    font-size: 48px;
+    font-weight: bold;
+    margin-bottom: 8px;
+  }
+  
+  .features-subtitle {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-size: 18px;
+    color: #6b7280; /* gray-600 equivalent */
+  }
+  
+  .features-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 30px;
+    justify-content: center;
+    padding-top: 2.5%;
+  }
+  
+  .feature-item {
+    text-align: center;
+  }
+  
+  .feature-icon {
+    font-size: 3em; /* Adjust icon size */
+    color: #9ca3af; /* gray-400 equivalent */
+    margin-bottom: 16px;
+  }
+  
+  .feature-title {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 4px;
+  }
+  
+  .feature-description {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-size: 14px;
+    color: #6b7280; /* gray-600 equivalent */
+  }
+
+  .testimonial-section {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    background-color: #f3f4f6;
+    text-align: center;
+    padding: 40px 0;
+    overflow: hidden; /* To ensure the overflow from cards is not visible */
+  }
+  
+  .testimonial-header h1 {
+    color: #333;
+    font-size: 1.5rem;
+    margin-bottom: 0.5rem;
+  }
+  
+  .testimonial-header p {
+    color: #666;
+    font-size: 1rem;
+    margin-bottom: 2rem;
+  }
+  
+  .testimonial-container {
+    position: relative;
+    max-width: 1200px;
+    margin: auto;
+    padding: 0 15px;
+  }
+  
+  .testimonial-slider {
+    display: flex;
+    justify-content: space-between;
+  }
+  
+  .testimonial-card {
+    background: #d3dce7;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    padding: 20px;
+    width: calc(33.333% - 20px); /* Account for 20px total padding between cards */
+    margin: 0 10px; /* Spacing between cards */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.3s ease-in-out;
+    row-gap: 10px;
+  }
+  
+  .testimonial-controls {
+    position: absolute;
+    top: 50%;
+    left: 0;
+    right: 0;
+    transform: translateY(-50%);
+    display: flex;
+    justify-content: space-between;
+    padding: 0 1rem;
+  }
+
+  .testimonial-title {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-size: 18px;
+    font-weight: bold;
+    margin-bottom: 4px;
+  }
+  
+  .testimonial-description {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-size: 16px;
+    color: #6b7280; /* gray-600 equivalent */
+  }
+  
+  .testimonial-arrow-left,
+  .testimonial-arrow-right {
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    font-size: 1.5rem;
+    color: #333;
+  }
+  
+  .testimonial-arrow-left {
+    align-self: flex-start;
+  }
+  
+  .testimonial-arrow-right {
+    align-self: flex-end;
+  }
+  
+  @media (max-width: 768px) {
+    .testimonial-slider {
+      flex-direction: column;
+    }
+  
+    .testimonial-card {
+      width: 100%;
+      margin-bottom: 1rem;
+    }
+  
+    .testimonial-controls {
+      display: none; /* Hide arrows on smaller screens */
+    }
+  }
+  
+  
+  
+  
+  
+
+  .footer {
+    background-color: #f8f9fa; /* Light gray background */
+    padding: 20px 0;
+    height: 250px;
+  }
+  
+  .footer-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 15px;
+  }
+  
+  .footer-section {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  
+  .footer-section-social .site-name {
+    font-family: 'Inter', sans-serif;
+    font-size: 24px;
+    font-weight: 700;
+    margin-bottom: 10px;
+  }
+  
+  .social-icons {
+    display: flex;
+    gap: 10px;
+  }
+  
+  .social-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 16px; /* Adjust as needed */
+    width: 36px; /* Circle size */
+    height: 36px;
+    border-radius: 50%;
+    background-color: #e1e4e8; /* Icon background */
+    color: #333; /* Icon color */
+  }
+  
+  .footer-section-links {
+    display: flex;
+    gap: 30px;
+  }
+  
+  .footer-topic {
+    font-family: 'Inter', sans-serif;
+    font-size: 18px;
+    font-weight: 700;
+  }
+  
+  .footer-link {
+    font-family: 'Inter', sans-serif;
+    color: #333; /* Link color */
+    text-decoration: none;
+    display: block;
+    margin: 5px 0;
+  }
+  
+  /* Add responsive styles as needed */
+  @media (max-width: 768px) {
+    .footer-content {
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+    }
+  
+    .footer-section {
+      margin-bottom: 20px;
+    }
+  
+    .footer-section-social {
+      align-items: center;
+    }
+  
+    .footer-section-links,
+    .footer-section-info {
+      align-items: center;
+    }
+  }
