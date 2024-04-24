@@ -3,6 +3,7 @@ var db = new PouchDB('mydb')
 db.info().then((info)=>{
     console.log(info)
 })
+
 const classData = [
     {
       _id: '1',
