@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Workout Tracker</title>
+  <script src="pouchdb-8.0.1.min.js"></script>
+  <script src="wscript.js" defer></script>
+  <link href="wstyles.css" rel="stylesheet">
+</head>
+<body>
+<nav class="navbar">
+  <div class="site-name">U-FIT</div>
+  <div class="nav-links">
+    <a href="#" class="nav-link">Page</a>
+    <a href="#" class="nav-link">Page</a>
+    <a href="#" class="nav-link">Page</a>
+    <button class="nav-button">Profile</button>
+  </div>
+</nav>
+<section class = 'workout-log-section'>
+<div class="container">
+<div class="text-content">
+<h1 class="section-title">Workout Tracker</h1>
+<p class="section-subtitle">Log and track your Workout</p>
+
+<div class="form-container">
+<form id="workoutForm">
+  <label for="exerciseName">Exercise Name:</label>
+  <input type="text" id="exerciseName" name="exerciseName"><br><br>
+
+  <label for="sets">Weight:</label>
+  <input type="number" id="weights" name="weights"><br><br>
+  
+  <label for="sets">Sets:</label>
+  <input type="number" id="sets" name="sets"><br><br>
+  
+  <label for="reps">Reps:</label>
+  <input type="number" id="reps" name="reps"><br><br>
+  
+  <button class = "button-save" type="button" onclick="saveWorkout()">Save Exercise</button>
+</form>
+</div>
+</div>
+<div class="image-content">
+  <img src="/Users/chinmay/Desktop/milestone-02/feature-image_8fe9c007-78d4-4a6e-b08c-20692f4b84b0.webp" alt="Boxing Image">
+</div>
+</div>
+
+<div id="classCardsContainer"></div>
+
+<h2 class="section-subtitle">Saved Workouts</h2>
+<div id="workoutList" class="workout-container">
+  <!-- Cards will be appended here -->
+</div>
+
+<div class="hero-buttons">
+<button class="button-primary" type="button" onclick="completeWorkout()">Workout Complete</button>
+<button class="button-secondary" type="button" onclick="clearHistory()">Clear History</button>
+</div>  
+</section>
+<!-- <footer class="footer">
+  <div class="footer-content">
+    <div class="footer-section footer-section-social">
+      <div class="site-name">Site name</div>
+      <div class="social-icons">
+        <a href="#" class="social-icon"><i class="fab fa-facebook-f"></i></a>
+        <a href="#" class="social-icon"><i class="fab fa-linkedin-in"></i></a>
+        <a href="#" class="social-icon"><i class="fab fa-youtube"></i></a>
+        <a href="#" class="social-icon"><i class="fab fa-instagram"></i></a>
+      </div>
+    </div>
+    <div class="footer-section footer-section-links">
+      <div class="footer-column">
+        <div class="footer-topic">Topic</div>
+        <a href="#" class="footer-link">Page</a>
+        <a href="#" class="footer-link">Page</a>
+        <a href="#" class="footer-link">Page</a>
+      </div>
+    </div>
+    <div class="footer-section footer-section-info">
+    </div>
+  </div>
+</footer> -->
+</body>
+</html>

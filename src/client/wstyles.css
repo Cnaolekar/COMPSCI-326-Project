@@ -1,0 +1,286 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;700&display=swap');
+
+body, h1, p, a, button {
+  margin: 0;
+  padding: 0;
+  font-family: 'Inter', sans-serif;
+}
+.navbar {
+background-color: #ffffff;
+padding: 1rem 2rem;
+height: 125px;
+display: flex;
+justify-content: space-between;
+align-items: center;
+}
+
+.site-name {
+font-weight: medium;
+font-size: 20px;
+}
+
+.nav-links {
+display: flex;
+gap: 2rem;
+}
+
+.nav-link {
+color: #000000;
+padding-top: 2%;
+text-decoration: none;
+font-weight: medium;
+font-size: 20px;
+}
+
+.nav-link:hover {
+color: #111827;
+}
+
+.nav-button {
+background-color: #000000;
+color: white;
+padding: 0.5rem 1rem;
+border: none;
+border-radius: 0.375rem;
+cursor: pointer;
+font-size: 20px;
+}
+
+.nav-button:hover {
+    background-color: #2563eb;
+}
+.workout-log-section{
+    max-width: 1200px;
+    margin: auto;
+    padding: 40px 15px;
+    text-align: center;
+}
+
+.container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: auto;
+    max-width: 1200px;
+    padding: 40px 15px;
+  }
+  
+  .text-content {
+    flex-grow: 1;
+    flex-shrink: 1;
+    padding-right: 15px;
+    min-width: 600px; 
+  }
+  
+  .image-content {
+    flex-grow: 1;
+    flex-shrink: 1;
+    min-width: 600px;
+  }
+  
+  .image-content img {
+    width: 100%;
+    height: auto;
+    max-height: 100%;
+    border-radius: 10px; 
+  }
+
+.form-container {
+    text-align: left;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 15px;
+  }
+  
+
+.section-title {
+    font-size: 72px;
+    color: #333;
+    margin-bottom: 0.5rem;
+    text-align: left;
+  }
+  
+  .section-subtitle {
+    font-size: 36px;
+    color: #666;
+    margin-bottom: 2rem;
+    text-align: left;
+  }
+
+.workout-page-container {
+  display: flex;
+  justify-content: space-between;
+}
+
+/* Column for the form */
+.form-column {
+  flex: 1; /* You can adjust the ratio as needed */
+  padding-right: 20px; /* Adds some space between the columns */
+}
+
+/* Column for the saved workouts */
+.saved-workouts-column {
+  flex: 1; /* Adjust the ratio to give more or less space */
+}
+
+/* Ensure that classCardsContainer only takes the necessary space */
+#classCardsContainer {
+  max-height: 100vh;
+  overflow-y: auto; /* Adds scroll if content is too long */
+}
+  
+
+
+  .class-card {
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.3); /* This adds a shadow */
+    /* border: 1px solid black; */
+    padding: 1rem;
+    text-align: left;
+    margin-top: 10px;
+    margin-bottom: 20px;
+}
+  
+  .class-title {
+    font-size: 2rem;
+    color: #333;
+    margin-bottom: 0.25rem;
+  }
+  
+  .class-description {
+    font-size: 1rem;
+    color: #666;
+    margin-bottom: 1rem;
+  }
+
+  .hero-buttons {
+    display: flex;
+    justify-content: left;
+    gap: 15px;
+  }
+  
+  .button-primary, .button-secondary, .button-save {
+    text-transform: uppercase;
+    font-weight: 700;
+    padding: 10px 20px;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    border-radius: 8px;
+  }
+
+  .button-save {
+    background-color: black;
+    color: white;
+    border: 2px solid black;
+  }
+  
+  .button-primary {
+    background-color: #ffffff;
+    color: black;
+    border: 2px solid black;
+  }
+  
+  .button-secondary {
+    background-color: transparent;
+    color: black;
+    border: 2px solid black;
+  }
+  
+  .button-primary:hover {
+    background-color: #111;
+    color: white;
+  }
+  
+  .button-secondary:hover {
+    background-color: white;
+    color: #000;
+  }
+
+  .footer {
+    background-color: #f8f9fa; /* Light gray background */
+    padding: 20px 0;
+    height: 250px;
+  }
+  
+  .footer-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 15px;
+  }
+  
+  .footer-section {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  
+  .footer-section-social .site-name {
+    font-family: 'Inter', sans-serif;
+    font-size: 24px;
+    font-weight: 700;
+    margin-bottom: 10px;
+  }
+  
+  .social-icons {
+    display: flex;
+    gap: 10px;
+  }
+  
+  .social-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 16px;
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    background-color: #e1e4e8; 
+    color: #333;
+  }
+  
+  .footer-section-links {
+    display: flex;
+    gap: 30px;
+  }
+  
+  .footer-topic {
+    font-family: 'Inter', sans-serif;
+    font-size: 18px;
+    font-weight: 700;
+  }
+  
+  .footer-link {
+    font-family: 'Inter', sans-serif;
+    color: #333; /* Link color */
+    text-decoration: none;
+    display: block;
+    margin: 5px 0;
+  }
+  
+  /* Add responsive styles as needed */
+  @media (max-width: 768px) {
+    .footer-content {
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+    }
+  
+    .footer-section {
+      margin-bottom: 20px;
+    }
+  
+    .footer-section-social {
+      align-items: center;
+    }
+  
+    .footer-section-links,
+    .footer-section-info {
+      align-items: center;
+    }
+  }
