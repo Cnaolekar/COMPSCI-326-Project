@@ -207,8 +207,13 @@ async function updateProductDisplay(products) {
         productDiv.className = 'product';
         productDiv.innerHTML = `
             <div class="class-card " data-category="${productData.class_name}">
-            <img class="class-image" src="${productData.img}" alt="${productData.class_name}">
+            <a href="classesredirect.html?id=${productData._id}">
+    <img class="class-image" src="${productData.img}" alt="${productData.class_name}">
+</a>
+
             <h3 class="class-title">${productData.class_name}</h3>
+
+            
         </div>
         `
         
@@ -293,68 +298,8 @@ async function updateProductDisplay(products) {
         // Assume this function updates the UI with filtered products
     });
 
-    const db = new PouchDB('enrollments');
+    
 
 
-const urlParams = new URLSearchParams(window.location.search);
-const classId = urlParams.get('id');
 
-
-function getClassDetails(id) {
-    return new Promise((resolve, reject) => {
-        const classDetail = classData.flat().find(classData => classData._id === id);
-        if (classDetail) {
-            resolve(classDetail);
-        } else {
-            reject(new Error('Class not found'));
-        }
-    });
-}
-
-async function displayClassDetails() {
-    try {
-        const classDetails = await getClassDetails(classId);
-        document.getElementById('class-name').textContent = classDetails.class_name;
-        document.getElementById('description').textContent = `Days: ${classDetails.days.join(', ')}`;
-        document.getElementById('instructor').textContent = `Instructor: ${classDetails.instructor_name}`;
-        document.getElementById('location').textContent = `Location: ${classDetails.location}`;
-        document.getElementById('category').textContent = `Category: ${classDetails.category}`; // New: Display category
-        document.getElementById('total-seats').textContent = `Total Seats: ${classDetails.total_seats}`; // New: Display total seats
-        document.getElementById('seats-available').textContent = `Seats Available: ${classDetails.seats_available}`; // New: Display seats available
-        document.getElementById('class-image').src = classDetails.img;
-    } catch (error) {
-        console.error('Error retrieving class details:', error);
-    }
-}
-
-// Function to handle form submission (enrollment)
-document.getElementById('enrollment-form').addEventListener('submit', async (event) => {
-    event.preventDefault();
-
-    const name = document.getElementById('name').value;
-    const email = document.getElementById('email').value;
-
-    try {
-        const classDetails = await getClassDetails(classId);
-        if (classDetails.seats_available > 0) {
-            // Enroll user
-            const enrollmentData = {
-                _id: `enrollment_${Date.now()}`,
-                classId: classId,
-                name: name,
-                email: email
-            };
-            await db.put(enrollmentData);
-            console.log('Enrollment data:', enrollmentData); 
-            alert('Enrollment successful!');
-        } else {
-            alert('Class is full. Cannot enroll.');
-        }
-    } catch (error) {
-        console.error('Error enrolling user:', error);
-    }
-});
-
-
-displayClassDetails();
     
