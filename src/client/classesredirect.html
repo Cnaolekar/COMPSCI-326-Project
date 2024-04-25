@@ -3,11 +3,22 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="classredirect.css" rel="stylesheet">
     <title>Class Details</title>
 </head>
 <body>
-    <h1><a href="Classes.html">Class Details</a></h1>
+    <nav class="navbar">
+        <div class="site-name">U-FIT</div>
+        <div class="nav-links">
+          <a href="#" class="nav-link">Page</a>
+          <a href="homepage.html" class="nav-link">Home</a>
+          <a href="Workouts.html" class="nav-link">Workouts</a>
+          <button class="nav-button">Profile</button>
+        </div>
+    </nav>
+    <section class="class-details-section">
     <div id="class-details">
+        <div id="text-content">
         <h2 id="class-name"></h2>
         <p id="description"></p>
         <p id="instructor"></p>
@@ -15,15 +26,17 @@
         <p id="category"></p> <!-- New: Display category -->
         <p id="total-seats"></p> <!-- New: Display total seats -->
         <p id="seats-available"></p> <!-- New: Display seats available -->
-        <img id="class-image" src="" alt="Class Image"> <!-- Image tag for class image -->
-    </div>
         <form id="enrollment-form">
             <input type="text" id="name" placeholder="Your Name" required><br>
             <input type="email" id="email" placeholder="Your Email" required><br>
             <button type="submit">Enroll</button>
         </form>
-    </div>
-
+        </div>
+        <div id="image-content">
+        <img id="class-image" src="" alt="Class Image"> <!-- Image tag for class image -->
+        </div>
+        </div>
+</section>
     <script src="pouchdb-8.0.1.min.js"></script>
     <script src="newjs.js" defer></script>
 </body>

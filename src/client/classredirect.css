@@ -1,0 +1,170 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;700&display=swap');
+
+body, h1, p, a, button {
+    margin: 0;
+    padding: 0;
+    font-family: 'Inter', sans-serif;
+  }
+  
+  .navbar {
+    background-color: #ffffff;
+    padding: 1rem 2rem;
+    height: 125px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .site-name {
+    font-weight: medium;
+    font-size: 20px;
+  }
+  
+  .nav-links {
+    display: flex;
+    gap: 2rem;
+  }
+  
+  .nav-link {
+    color: #000000;
+    padding-top: 2%;
+    text-decoration: none;
+    font-weight: medium;
+    font-size: 20px;
+  }
+  
+  .nav-link:hover {
+    color: #111827;
+  }
+  
+  .nav-button {
+    background-color: #000000;
+    color: white;
+    padding: 0.5rem 1rem;
+    border: none;
+    border-radius: 0.375rem;
+    cursor: pointer;
+    font-size: 20px;
+  }
+  
+  .nav-button:hover {
+      background-color: #2563eb;
+  }
+  
+  .class-details-section {
+    width: 100%;
+    margin: auto;
+    padding: 50px 15px;
+    text-align: left;
+  }
+  
+  #text-content {
+    flex-grow: 3;
+    flex-shrink: 1;
+    padding-right: 15px;
+    min-width: 600px; 
+  }
+  
+  #image-content {
+    flex-grow: 1;
+    flex-shrink: 1;
+    min-width: 600px;
+  }
+
+  #class-image{
+    width: 100%;
+    height: auto;
+    max-height: 100%;
+    border-radius: 10px; 
+  }
+  
+  
+  #class-details {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #fff;
+    padding: 20px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  }
+  
+  #class-name {
+    color: #000000;
+    margin-bottom: 10px;
+    font-size: 64px;
+    font-weight: bold;
+  }
+  
+  #description, #instructor, #location, #category, #total-seats, #seats-available {
+    margin-bottom: 5px;
+    font-size: 24px;
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    color: #828282;
+  }
+  
+  #class-image {
+    width: auto;
+    height: auto;
+    max-width: 100%;
+    border-radius: 10px;
+  
+  }
+  
+  #enrollment-form {
+    background: #fff;
+    padding: 20px;
+    width: 100%;
+    margin-top: 20px; 
+  }
+  
+  #enrollment-form input[type="text"],
+  #enrollment-form input[type="email"] {
+    width: calc(50% - 10px);
+    padding: 10px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 2px solid black;
+    border-radius: 4px;
+    box-sizing: border-box;
+  }
+  
+  #enrollment-form button[type="submit"] {
+    text-transform: uppercase;
+    font-weight: 700;
+    padding: 10px 20px;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    border-radius: 8px;
+    background-color: #ffffff;
+    color: black;
+    border: 2px solid black;
+  }
+  
+  #enrollment-form button[type="submit"]:hover {
+    background-color: #111;
+    color: white;
+  }
+  
+  @media (max-width: 768px) {
+    .container {
+      flex-direction: column;
+    }
+  
+    .text-content, .image-content, #enrollment-form {
+      width: 100%; /* Full width for mobile */
+    }
+  
+    .image-content {
+      justify-content: center; /* Center image on smaller screens */
+      margin-top: 20px; /* Space between text and image on smaller screens */
+    }
+  }
+  
+  @media (max-width: 600px) {
+    #enrollment-form input[type="text"],
+    #enrollment-form input[type="email"] {
+      width: 100%;
+    }
+  }
