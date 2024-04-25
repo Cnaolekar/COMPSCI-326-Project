@@ -164,7 +164,7 @@ async function displayClassDetails() {
         document.getElementById('category').textContent = `Category: ${classDetails.category}`; // New: Display category
         document.getElementById('total-seats').textContent = `Total Seats: ${classDetails.total_seats}`; // New: Display total seats
         document.getElementById('seats-available').textContent = `Seats Available: ${classDetails.seats_available}`; // New: Display seats available
-        document.getElementById('class-image').src = classDetails.img;
+        document.getElementById('class-image').src = "../img/"+classDetails.img;
     } catch (error) {
         console.error('Error retrieving class details:', error);
     }

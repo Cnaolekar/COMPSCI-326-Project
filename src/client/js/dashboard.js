@@ -41,7 +41,7 @@ const UserData =
                  // targetting the height box 
                 detailDiv.className = 'height';
                 detailDiv.innerHTML = `  
-                <div class="font-semibold text-gray-700 text-sm sm:text-base">Height</div>
+                <div class="font-semibold text-gray-700 text-sm sm:text-base">Weight</div>
                 <div class="text-lg sm:text-xl font-bold">${detailtData.height}"</div>
                 <button class="text-blue-500 text-sm mt-2 hover:text-blue-700">Edit</button>
 
@@ -78,7 +78,7 @@ const UserData =
                 var profileDiv = document.createElement('div'); 
                 profileDiv.className = 'flex flex-col items-center';
     profileDiv.innerHTML = `  
-    <img src="${detailtData.img}" alt="Profile Picture" class="rounded-full w-24 h-24">
+    <img src="../img/${detailtData.img}" alt="Profile Picture" class="rounded-full w-24 h-24">
     <div>
       <h2 class="text-5xl font-extralight">${detailtData.name}</h2>
       <button class="px-2 py-1 text-sm text-blue-500 font-semibold rounded-full border border-blue-200 hover:text-white hover:bg-blue-600 hover:border-transparent focus:outline-none focus:ring-2 focus:ring-blue-600 focus:ring-offset-2">Change profile photo</button>

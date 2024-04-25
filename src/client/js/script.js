@@ -188,7 +188,7 @@ async function updateProductDisplay(products) {
         productDiv.innerHTML = `
             <div class="class-card " data-category="${productData.class_name}">
             <a href="classesredirect.html?id=${productData._id}">
-    <img class="class-image" src="${productData.img}" alt="${productData.class_name}">
+    <img class="class-image" src="../img/${productData.img}" alt="${productData.class_name}">
 </a>
 
             <h3 class="class-title">${productData.class_name}</h3>
