@@ -10,7 +10,7 @@ const UserData =
             "email": "hawking@yahoo.in" ,
             "weight" :"175lbs",  
             "height":"165cm", 
-            "img":"chad.jpeg", 
+            "img":"mma.jpg", 
             "name": "chaitu"
         }
     ]; 
@@ -42,20 +42,19 @@ const UserData =
                 var detailDiv = document.createElement('div'); 
                 detailDiv.className = 'height';
                 detailDiv.innerHTML = `  
-                <div class="flex-1 bg-white shadow rounded p-4">
-                <div class="font-semibold text-gray-700">Height</div>
-                 <div class="text-xl font-bold">${detailtData.height}"</div>
-                <button class="text-blue-500 text-sm mt-2">Edit</button>
-                </div>
+                <div class="font-semibold text-gray-700 text-sm sm:text-base">Height</div>
+                <div class="text-lg sm:text-xl font-bold">${detailtData.height}"</div>
+                <button class="text-blue-500 text-sm mt-2 hover:text-blue-700">Edit</button>
+
                 `
                 detailWrapper.appendChild(detailDiv);
                 // weight 
                 var WeightDiv = document.createElement('div'); 
                 WeightDiv.className = 'weight';
                 WeightDiv.innerHTML = `  
-                 <div class="font-semibold text-gray-700">Weight</div>
-                <div class="text-xl font-bold">${detailtData.weight}</div>
-                <button class="text-blue-500 text-sm mt-2">Edit</button> 
+                <div class="font-semibold text-gray-700 text-sm sm:text-base">Height</div>
+                <div class="text-lg sm:text-xl font-bold">${detailtData.weight}"</div>
+                <button class="text-blue-500 text-sm mt-2 hover:text-blue-700">Edit</button>
                 `
                 weightWrapper.appendChild(WeightDiv);
                // userName
@@ -78,14 +77,13 @@ const UserData =
                emialWrapper.appendChild(emailDiv);
                 // profile 
                 var profileDiv = document.createElement('div'); 
-                profileDiv.className = 'user';
-                profileDiv.innerHTML = `  
-                <img src="${detailtData.img}" alt="Profile Picture" class="rounded-full w-1 h-1">
-                <div>
-                  <h2 class="text-5xl font-extralight">${detailtData.name}</h2>
-                  <button class="px-2 py-1 text-sm text-blue-500 font-semibold rounded-full border border-blue-200 hover:text-white hover:bg-blue-600 hover:border-transparent focus:outline-none focus:ring-2 focus:ring-blue-600 focus:ring-offset-2">Change profile photo</button>
-                </div>
-               `
+                profileDiv.className = 'flex flex-col items-center';
+    profileDiv.innerHTML = `  
+    <img src="${detailtData.img}" alt="Profile Picture" class="rounded-full w-24 h-24">
+    <div>
+      <h2 class="text-5xl font-extralight">${detailtData.name}</h2>
+      <button class="px-2 py-1 text-sm text-blue-500 font-semibold rounded-full border border-blue-200 hover:text-white hover:bg-blue-600 hover:border-transparent focus:outline-none focus:ring-2 focus:ring-blue-600 focus:ring-offset-2">Change profile photo</button>
+    </div>`
                profileWrapper.appendChild(profileDiv);
             });
         }   
