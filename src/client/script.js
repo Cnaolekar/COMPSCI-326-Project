@@ -154,28 +154,7 @@ const classData = [
 
 
 
-// async function getProductsByCategory(category) {
-//     try {
-//         const result = await db.find({
-//             selector: {
-//                 category: {$eq: category}
-//             },
-//             fields: ['_id',
-//             "class_name",
-//             'category',
-//             'category_id',
-//             'day_1',
-//             'day_2',
-//             'instructor_name' ,
-//             'total_seats' ,
-//             'seats_booked' ,
-//             'seats_available']
-//         });
-//         return result.docs;
-//     } catch (err) {
-//         console.error('Error fetching products by category:', err);
-//     }
-// } 
+
 async function getProductsByCategory(category,days) {
     try {
         // Fetch all documents, including their details
@@ -184,7 +163,7 @@ async function getProductsByCategory(category,days) {
         });
 
         // Use JavaScript to filter documents by category
-        //const filteredProducts = result.rows.filter(row => row.doc.category && row.doc.category === category).map(row => row.doc);
+       
         const filteredProducts = result.rows.filter(row => {
             return row.doc.category && row.doc.category === category &&
                    row.doc.days && row.doc.days.some(day => row.doc.days.includes(days));
@@ -203,7 +182,8 @@ async function updateProductDisplay(products) {
         var productData =product
         var productDiv = document.createElement('div'); 
         console.log(productData);
-        console.log(productData.img)
+        console.log(productData.img) 
+        //We create Class Card that match our filter criterion
         productDiv.className = 'product';
         productDiv.innerHTML = `
             <div class="class-card " data-category="${productData.class_name}">
@@ -222,31 +202,7 @@ async function updateProductDisplay(products) {
 } 
 
 
-// document.addEventListener('DOMContentLoaded', function() {
-//     // Create or connect to a local PouchDB database
-//     // var db = new PouchDB('m');
-//     var categorySelect = document.getElementById('category');
-//     // Function to fetch and display products
-//     function displayProducts(category) {
-//         db.allDocs({include_docs: true, descending: true}, function(err, doc) {
-//             if (err) {
-//                 console.error(err);
-//             } else {
-//                 updateProductDisplay(getProductsByCategory(categorySelect));
-//             }
-//         });
-//     } }); 
 
-
-
-    // document.addEventListener('DOMContentLoaded', function() {
-    //     var categorySelect = document.getElementById('category');
-    
-    //     categorySelect.addEventListener('change', function() {
-    //         var selectedCategory = this.value;
-    //         filterData(selectedCategory);
-    //     });
-    // });
 
     document.addEventListener('DOMContentLoaded',  function() {
         var db = new PouchDB('mydb'); // Corrected database name for consistency
@@ -257,22 +213,7 @@ async function updateProductDisplay(products) {
             event.preventDefault(); // Prevent the default form submit action
             displayProducts(categorySelect.value,days.value); // Pass the selected value from the select element
         });
-        // categorySelect.addEventListener(var'change', function() {
-        //     displayProducts(this.value); // Pass the selected value
-        // });
-    
-        // Function to fetch and display products based on category
-        //  function displayProducts(category) {
-        //     db.allDocs({include_docs: true, descending: true}, function(err, doc) {
-        //         if (err) {
-        //             console.error(err);
-        //         } else {
-        //             var filteredDocs =   getProductsByCategory(category); 
-        //             console.log(filteredDocs);
-        //             updateProductDisplay(filteredDocs);
-        //         }
-        //     });
-        // } 
+        
         function displayProducts(category,days) {
             db.allDocs({ include_docs: true, descending: true }, function(err, doc) {
                 if (err) {
@@ -292,10 +233,7 @@ async function updateProductDisplay(products) {
         }
         
     
-        // Assume this function filters the products by category
-    
-    
-        // Assume this function updates the UI with filtered products
+        
     });
 
     

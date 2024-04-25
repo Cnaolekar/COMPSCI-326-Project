@@ -8,7 +8,7 @@ body, h1, p, a, button {
 }
 
 .navbar {
-background-color: #ffffff; /* light gray */
+background-color: #ffffff; 
 padding: 1rem 2rem;
 height: 125px;
 display: flex;
@@ -27,7 +27,7 @@ gap: 2rem;
 }
 
 .nav-link {
-color: #000000; /* gray-700 */
+color: #000000; 
 padding-top: 2%;
 text-decoration: none;
 font-weight: medium;
@@ -35,11 +35,11 @@ font-size: 20px;
 }
 
 .nav-link:hover {
-color: #111827; /* darker gray */
+color: #111827; 
 }
 
 .nav-button {
-background-color: #000000; /* blue-500 */
+background-color: #000000; 
 color: white;
 padding: 0.5rem 1rem;
 border: none;
@@ -49,7 +49,7 @@ font-size: 20px;
 }
 
 .nav-button:hover {
-    background-color: #2563eb; /* darker blue */
+    background-color: #2563eb; 
 }
 
 .group-fitness-section {
@@ -92,14 +92,14 @@ font-size: 20px;
     margin-bottom: 1rem;
   }
   
-  /* Style your select elements and input[type="date"] to match your design */
+  
   select,
   input[type="date"] {
     padding: 0.5rem;
     margin-right: 0.5rem;
   }
   
-  /* Style the search button */
+  
   button[type="submit"] {
     padding: 0.5rem 1rem;
     background-color: #000;
@@ -123,9 +123,9 @@ font-size: 20px;
   
   .class-grid {
     display: grid;
-    grid-template-columns: repeat(2, 1fr); /* Two classes per row */
+    grid-template-columns: repeat(2, 1fr); 
     gap: 1rem;
-    margin-bottom: 2rem; /* Spacing between rows */
+    margin-bottom: 2rem; 
   }
   
   .class-card {
@@ -138,10 +138,10 @@ font-size: 20px;
   
   .class-image {
     width: 100%; /* Ensure it takes up the full width of the card */
-    height: 400px; /* Set a fixed height for all images */
+    height: 400px; 
     object-fit: cover; /* This will cover the area, potentially cropping the image */
     border-radius: 8px; /* Match the border radius of the card if any */
-    margin-bottom: 1rem; /* Optional spacing between image and text */
+    margin-bottom: 1rem; 
   }
   
   .class-title {
@@ -196,7 +196,7 @@ font-size: 20px;
   }
   
   
-  /* Responsive layout adjustments */
+
   @media (max-width: 768px) {
     .class-grid {
       grid-template-columns: 1fr;
@@ -240,12 +240,12 @@ font-size: 20px;
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 16px; /* Adjust as needed */
-    width: 36px; /* Circle size */
+    font-size: 16px; 
+    width: 36px; 
     height: 36px;
     border-radius: 50%;
-    background-color: #e1e4e8; /* Icon background */
-    color: #333; /* Icon color */
+    background-color: #e1e4e8; 
+    color: #333; 
   }
   
   .footer-section-links {
@@ -261,13 +261,13 @@ font-size: 20px;
   
   .footer-link {
     font-family: 'Inter', sans-serif;
-    color: #333; /* Link color */
+    color: #333; 
     text-decoration: none;
     display: block;
     margin: 5px 0;
   }
   
-  /* Add responsive styles as needed */
+
   @media (max-width: 768px) {
     .footer-content {
       flex-direction: column;

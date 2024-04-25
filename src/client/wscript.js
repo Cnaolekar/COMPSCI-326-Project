@@ -30,30 +30,13 @@
     workoutList.innerHTML = '';
   }
 
-  // function refreshWorkoutList() {
-  //   var workoutList = document.getElementById('workoutList');
-  //   workoutList.innerHTML = '';
-    
-
-  //   db.allDocs({ include_docs: true }).then(function(result) {
-  //     result.rows.forEach(function(row) {
-  //       var workout = row.doc;
-  //       var listItem = document.createElement('li');
-  //       listItem.textContent = `${workout.exerciseName} - Sets: ${workout.sets}, Reps: ${workout.reps}`;
-  //       workoutList.appendChild(listItem);
-  //     });
-  //   }).catch(function(error) {
-  //     console.error('Error fetching workouts:', error);
-  //   });
-  // }
-
-  // refreshWorkoutList();
+  
 
   function createClassCard(exerciseName, weights, sets, reps) {
     var classCardsContainer = document.getElementById('classCardsContainer');
     var newCard = document.createElement('div');
     newCard.classList.add('class-card');
-    newCard.dataset.category = 'zumba'; // Add data-category attribute if needed
+    newCard.dataset.category = 'zumba'; 
 
     newCard.innerHTML = `
       <h3 class="class-title">${exerciseName}</h3>

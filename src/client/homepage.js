@@ -1,3 +1,4 @@
+// This is used for adding a dynamic touch to testimonial scrolling sections
 document.addEventListener('DOMContentLoaded', function() {
     const slider = document.querySelector('.testimonial-slider');
     const testimonials = document.querySelectorAll('.testimonial-card');

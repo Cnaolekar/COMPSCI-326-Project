@@ -1,6 +1,6 @@
-
+// Dynamically displays data for all classes , like avialiability of seats 
 const newdb = new PouchDB('enrollments');
-
+// Fetching the data of all classes 
 const classData = [
     
     {

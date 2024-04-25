@@ -2,7 +2,7 @@ var db = new PouchDB('mydb')
 db.info().then((info)=>{
     console.log(info)
 })
-
+//Inserting mock data for a user using pouch db
 const UserData = 
     [
         {
@@ -13,7 +13,8 @@ const UserData =
             "img":"mma.jpg", 
             "name": "chaitu"
         }
-    ]; 
+    ];  
+    // We have used bulked docs to push all the the data into database
     db.bulkDocs(UserData,function(err,res){
         if(err){
             console.log(err)
@@ -21,11 +22,10 @@ const UserData =
         else{
             console.log("data created")
         }});
-        // <div class="flex-1 bg-white shadow rounded p-4">
-        // <div class="font-semibold text-gray-700">Height</div>
-        // <div class="text-xl font-bold">183 cms</div>
-        // <button class="text-blue-500 text-sm mt-2">Edit</button>
+
         async function updateDetailtDisplay(detail) {
+            //This is uded for targetting specific ids to make their display dyanmic 
+            // This is done by loading data from the databse
             var detailWrapper = document.querySelector("#infoBox");
             var weightWrapper = document.querySelector("#weightbox");
             var userNameWrapper = document.querySelector("#Username");
@@ -34,12 +34,11 @@ const UserData =
          console.log(profileWrapper);
             
              
-            // console.log(detailWrapper);
-            // detailWrapper.innerHTML = ''; // Clear current content
-            // console.log(products)
+
             detail.forEach(function(deet) {
                 var detailtData =deet;
                 var detailDiv = document.createElement('div'); 
+                 // targetting the height box 
                 detailDiv.className = 'height';
                 detailDiv.innerHTML = `  
                 <div class="font-semibold text-gray-700 text-sm sm:text-base">Height</div>
@@ -75,7 +74,7 @@ const UserData =
                  <p class="text-gray-700">${detailtData.email}</p>
                `
                emialWrapper.appendChild(emailDiv);
-                // profile 
+                // Targetting profile 
                 var profileDiv = document.createElement('div'); 
                 profileDiv.className = 'flex flex-col items-center';
     profileDiv.innerHTML = `  

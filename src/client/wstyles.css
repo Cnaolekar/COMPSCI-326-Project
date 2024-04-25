@@ -113,21 +113,21 @@ font-size: 20px;
   justify-content: space-between;
 }
 
-/* Column for the form */
+
 .form-column {
-  flex: 1; /* You can adjust the ratio as needed */
-  padding-right: 20px; /* Adds some space between the columns */
+  flex: 1; 
+  padding-right: 20px; 
 }
 
-/* Column for the saved workouts */
+
 .saved-workouts-column {
-  flex: 1; /* Adjust the ratio to give more or less space */
+  flex: 1; 
 }
 
-/* Ensure that classCardsContainer only takes the necessary space */
+
 #classCardsContainer {
   max-height: 100vh;
-  overflow-y: auto; /* Adds scroll if content is too long */
+  overflow-y: auto; 
 }
   
 
@@ -135,8 +135,8 @@ font-size: 20px;
   .class-card {
     background-color: #fff;
     border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0,0,0,0.3); /* This adds a shadow */
-    /* border: 1px solid black; */
+    box-shadow: 0 4px 8px rgba(0,0,0,0.3); 
+   
     padding: 1rem;
     text-align: left;
     margin-top: 10px;
@@ -256,13 +256,13 @@ font-size: 20px;
   
   .footer-link {
     font-family: 'Inter', sans-serif;
-    color: #333; /* Link color */
+    color: #333; 
     text-decoration: none;
     display: block;
     margin: 5px 0;
   }
   
-  /* Add responsive styles as needed */
+ 
   @media (max-width: 768px) {
     .footer-content {
       flex-direction: column;

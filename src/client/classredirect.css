@@ -153,12 +153,12 @@ body, h1, p, a, button {
     }
   
     .text-content, .image-content, #enrollment-form {
-      width: 100%; /* Full width for mobile */
+      width: 100%; 
     }
   
     .image-content {
-      justify-content: center; /* Center image on smaller screens */
-      margin-top: 20px; /* Space between text and image on smaller screens */
+      justify-content: center; 
+      margin-top: 20px; 
     }
   }
   
@@ -205,12 +205,12 @@ body, h1, p, a, button {
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 16px; /* Adjust as needed */
-    width: 36px; /* Circle size */
+    font-size: 16px; 
+    width: 36px; 
     height: 36px;
     border-radius: 50%;
-    background-color: #e1e4e8; /* Icon background */
-    color: #333; /* Icon color */
+    background-color: #e1e4e8; 
+    color: #333; 
   }
   
   .footer-section-links {
@@ -226,13 +226,13 @@ body, h1, p, a, button {
   
   .footer-link {
     font-family: 'Inter', sans-serif;
-    color: #333; /* Link color */
+    color: #333; 
     text-decoration: none;
     display: block;
     margin: 5px 0;
   }
   
-  /* Add responsive styles as needed */
+
   @media (max-width: 768px) {
     .footer-content {
       flex-direction: column;
