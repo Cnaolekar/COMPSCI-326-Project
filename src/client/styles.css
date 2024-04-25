@@ -19,6 +19,7 @@ align-items: center;
 .site-name {
 font-weight: medium;
 font-size: 20px;
+font-weight: bold;
 }
 
 .nav-links {
@@ -88,7 +89,7 @@ font-size: 20px;
 .hero-title {
   font-size: 2.5rem;
   font-weight: 700;
-  margin-bottom: 1em;
+  margin-bottom: 0.5em;
 }
 
 .hero-description {
@@ -258,7 +259,7 @@ font-size: 20px;
     align-items: center; /* Center-align items for a tidy look */
     justify-content: space-between; /* Distribute space evenly */
     transition: transform 0.3s ease-in-out, box-shadow 0.3s ease;
-    row-gap: 15px; /* Adjust gap between rows */
+    row-gap: 10px; /* Adjust gap between rows */
     font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; /* Modern, clean font */
 }
 
@@ -330,9 +331,8 @@ font-size: 20px;
   
 
   .footer {
-    background-color: #f8f9fa; /* Light gray background */
+    background-color: white;
     padding: 20px 0;
-    height: 250px;
   }
   
   .footer-content {

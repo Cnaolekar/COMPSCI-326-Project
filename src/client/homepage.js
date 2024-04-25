@@ -34,3 +34,8 @@ document.addEventListener('DOMContentLoaded', function() {
     document.querySelector('.testimonial-arrow-right').addEventListener('click', slideRight);
     document.querySelector('.testimonial-arrow-left').addEventListener('click', slideLeft);
 });
+
+document.getElementById('scroll-to-features').addEventListener('click', function() {
+    document.getElementById('features-section').scrollIntoView({ behavior: 'smooth' });
+  });
+  
