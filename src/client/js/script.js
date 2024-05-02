@@ -1,8 +1,9 @@
+// Log database information on startup
 var db = new PouchDB('mydb')
 db.info().then((info)=>{
     console.log(info)
 })
-
+// Data for fitness classes
 const classData = [
     
         {
@@ -139,7 +140,8 @@ const classData = [
         }
     
     
-  ];
+  ]; 
+  // Bulk insert class data into the database
   db.bulkDocs(classData,function(err,res){
     if(err){
         console.log(err)
@@ -154,7 +156,7 @@ const classData = [
 
 
 
-
+// Function to fetch products by category and day
 async function getProductsByCategory(category,days) {
     try {
         // Fetch all documents, including their details
@@ -173,7 +175,7 @@ async function getProductsByCategory(category,days) {
         console.error('Error fetching products by category:', err);
     }
 }
-
+// Function to update the UI with class cards
 async function updateProductDisplay(products) {
     var productWrapper = document.querySelector('.class-grid');
     productWrapper.innerHTML = ''; // Clear current content
@@ -188,8 +190,8 @@ async function updateProductDisplay(products) {
         productDiv.innerHTML = `
             <div class="class-card " data-category="${productData.class_name}">
             <a href="classesredirect.html?id=${productData._id}">
-    <img class="class-image" src="../img/${productData.img}" alt="${productData.class_name}">
-</a>
+            <img class="class-image" src="../img/${productData.img}" alt="${productData.class_name}">
+            </a>
 
             <h3 class="class-title">${productData.class_name}</h3>
 

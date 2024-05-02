@@ -43,7 +43,7 @@ const UserData =
                 detailDiv.innerHTML = `  
                 <div class="font-semibold text-gray-700 text-sm sm:text-base">Weight</div>
                 <div class="text-lg sm:text-xl font-bold">${detailtData.height}"</div>
-                <button class="text-blue-500 text-sm mt-2 hover:text-blue-700">Edit</button>
+                
 
                 `
                 detailWrapper.appendChild(detailDiv);
@@ -53,7 +53,7 @@ const UserData =
                 WeightDiv.innerHTML = `  
                 <div class="font-semibold text-gray-700 text-sm sm:text-base">Height</div>
                 <div class="text-lg sm:text-xl font-bold">${detailtData.weight}"</div>
-                <button class="text-blue-500 text-sm mt-2 hover:text-blue-700">Edit</button>
+                
                 `
                 weightWrapper.appendChild(WeightDiv);
                // userName
@@ -81,7 +81,7 @@ const UserData =
     <img src="../img/${detailtData.img}" alt="Profile Picture" class="rounded-full w-24 h-24">
     <div>
       <h2 class="text-5xl font-extralight">${detailtData.name}</h2>
-      <button class="px-2 py-1 text-sm text-blue-500 font-semibold rounded-full border border-blue-200 hover:text-white hover:bg-blue-600 hover:border-transparent focus:outline-none focus:ring-2 focus:ring-blue-600 focus:ring-offset-2">Change profile photo</button>
+       
     </div>`
                profileWrapper.appendChild(profileDiv);
             });
