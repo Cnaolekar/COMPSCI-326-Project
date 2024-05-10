@@ -1,4 +1,5 @@
 // Log database information on startup
+const URL = "http://localhost:3000"; 
 var db = new PouchDB('mydb')
 db.info().then((info)=>{
     console.log(info)
@@ -157,24 +158,24 @@ const classData = [
 
 
 // Function to fetch products by category and day
-async function getProductsByCategory(category,days) {
-    try {
-        // Fetch all documents, including their details
-        const result = await db.allDocs({
-            include_docs: true
-        });
+// async function getProductsByCategory(category,days) {
+//     try {
+//         // Fetch all documents, including their details
+//         const result = await db.allDocs({
+//             include_docs: true
+//         });
 
-        // Use JavaScript to filter documents by category
+//         // Use JavaScript to filter documents by category
        
-        const filteredProducts = result.rows.filter(row => {
-            return row.doc.category && row.doc.category === category &&
-                   row.doc.days && row.doc.days.some(day => row.doc.days.includes(days));
-        }).map(row => row.doc);
-        return filteredProducts;
-    } catch (err) {
-        console.error('Error fetching products by category:', err);
-    }
-}
+//         const filteredProducts = result.rows.filter(row => {
+//             return row.doc.category && row.doc.category === category &&
+//                    row.doc.days && row.doc.days.some(day => row.doc.days.includes(days));
+//         }).map(row => row.doc);
+//         return filteredProducts;
+//     } catch (err) {
+//         console.error('Error fetching products by category:', err);
+//     }
+// }
 // Function to update the UI with class cards
 async function updateProductDisplay(products) {
     var productWrapper = document.querySelector('.class-grid');
@@ -216,27 +217,51 @@ async function updateProductDisplay(products) {
             displayProducts(categorySelect.value,days.value); // Pass the selected value from the select element
         });
         
-        function displayProducts(category,days) {
-            db.allDocs({ include_docs: true, descending: true }, function(err, doc) {
-                if (err) {
-                    console.error(err);
-                } else {
-                    // Since getProductsByCategory returns a promise, you need to wait for it to resolve
-                    getProductsByCategory(category,days).then(function(filteredDocs) {
-                        // Now filteredDocs should be the array you expect
-                        console.log(filteredDocs); // This should log the array to the console
-                        updateProductDisplay(filteredDocs); // Call the function with the array
-                    }).catch(function(error) {
-                        // Handle any errors that occur during the promise
-                        console.error('Error fetching filtered docs:', error);
-                    });
-                }
-            });
-        }
+        // function displayProducts(category,days) {
+        //     db.allDocs({ include_docs: true, descending: true }, function(err, doc) {
+        //         if (err) {
+        //             console.error(err);
+        //         } else { 
+        //             // Since getProductsByCategory returns a promise, you need to wait for it to resolve
+        //             getProductsByCategory(category,days).then(function(filteredDocs) {
+        //                 // Now filteredDocs should be the array you expect
+        //                 console.log(filteredDocs); // This should log the array to the console
+        //                 updateProductDisplay(filteredDocs); // Call the function with the array
+        //             }).catch(function(error) {
+        //                 // Handle any errors that occur during the promise
+        //                 console.error('Error fetching filtered docs:', error);
+        //             });
+        //         }
+        //     });
+        // } 
+        async function displayProducts(category, days) {
+          try {
+              const doc = await db.allDocs({ include_docs: true, descending: true });
+              // Assuming URL and name are defined elsewhere correctl y
+              const queryParams = new URLSearchParams({ days, category }).toString();
+              const response = await fetch(`${URL}/read?${queryParams}`, {
+                  method: "POST",
+              }); 
+              if (!response.ok) {
+                throw new Error(`HTTP error! Status: ${response.status}`);
+            }
+            const data = await response.json();
+            
+              try {
+                  const filteredDocs = data
+                  console.log(filteredDocs); // This should log the array to the console
+                  updateProductDisplay(filteredDocs); // Call the function with the array
+              } catch (error) {
+                  console.error('Error fetching filtered docs:', error);
+              }
+          } catch (err) {
+              console.error(err);
+          }
+      }
+  });
         
     
-        
-    });
+    
 
     
 
