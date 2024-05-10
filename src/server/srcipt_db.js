@@ -141,30 +141,58 @@ const classData = [
     
     
   ]; 
-  // Bulk insert class data into the database
-  db.bulkDocs(classData,function(err,res){
-    if(err){
-        console.log(err)
+  // Bulk insert class data into the database 
+export async function insertData() {
+  db.bulkDocs(classData, function (err, res) {
+    if (err) {
+      console.log(err)
     }
-    else{
-        console.log("data created")
-    }}); 
-
-export async function filterbyCategory(category,days){
-    try {
-        // Fetch all documents, including their details
-        const result = await db.allDocs({
-            include_docs: true
-        });
-
-        // Use JavaScript to filter documents by category
-       
-        const filteredProducts = result.rows.filter(row => {
-            return row.doc.category && row.doc.category === category &&
-                   row.doc.days && row.doc.days.some(day => row.doc.days.includes(days));
-        }).map(row => row.doc);
-        return filteredProducts;
-    } catch (err) {
-        console.error('Error fetching products by category:', err);
+    else {
+      console.log("data created xyz")
     }
+  });
+}
+
+// export async function filterbyCategory(category,days){
+//     try {
+//         // Fetch all documents, including their details
+//         const result = await db.allDocs({
+//             include_docs: true
+//         });
+
+//         // Use JavaScript to filter documents by category
+//       console.log(category);
+//       console.log(days);
+//       console.log(result);
+//         const filteredProducts = result.rows.filter(row => {
+//             return row.doc.category && row.doc.category === category &&
+//                    row.doc.days && row.doc.days.some(day => row.doc.days.includes(days));
+//         }).map(row => row.doc); 
+      
+//         return filteredProducts;
+//     } catch (err) {
+//         console.error('Error fetching products by category:', err);
+//     }
+// } 
+export async function filterbyCategory(category, days){
+  try {
+      // Fetch all documents, including their details
+      const result = await db.allDocs({
+          include_docs: true
+      });
+
+      console.log("Category:", category);
+      console.log("Day:", days);
+      console.log("Result from DB:", result);
+
+      // Use JavaScript to filter documents by category and day
+      // const filteredProducts = result.rows.filter(row => {
+      //     return row.doc.category === category && row.doc.days.includes(days);
+      // }).map(row => row.doc);
+
+      // console.log("Filtered Products:", filteredProducts); // Debug output
+      return result;
+  } catch (err) {
+      console.error('Error fetching products by category:', err);
+  }
 }
