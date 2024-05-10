@@ -174,7 +174,7 @@ export async function insertData() {
 //         console.error('Error fetching products by category:', err);
 //     }
 // } 
-export async function filterbyCategory(category, days){
+export async function filterbyCategory(days, category){
   try {
       // Fetch all documents, including their details
       const result = await db.allDocs({
@@ -185,13 +185,15 @@ export async function filterbyCategory(category, days){
       console.log("Day:", days);
       console.log("Result from DB:", result);
 
-      // Use JavaScript to filter documents by category and day
-      // const filteredProducts = result.rows.filter(row => {
-      //     return row.doc.category === category && row.doc.days.includes(days);
-      // }).map(row => row.doc);
+    
+      const filteredProducts = result.rows.filter(row => {
+                  return row.doc.category && row.doc.category === category &&
+                           row.doc.days && row.doc.days.some(day => row.doc.days.includes(days));
+                 }).map(row => row.doc);
+                
 
-      // console.log("Filtered Products:", filteredProducts); // Debug output
-      return result;
+       // Debug output
+      return filteredProducts;
   } catch (err) {
       console.error('Error fetching products by category:', err);
   }

@@ -181,8 +181,8 @@ async function updateProductDisplay(products) {
     var productWrapper = document.querySelector('.class-grid');
     productWrapper.innerHTML = ''; // Clear current content
     console.log(products.rows)  
-    products.rows.forEach(function(product) {
-        var productData =product.doc
+    products.forEach(function(product) {
+        var productData =product
         var productDiv = document.createElement('div'); 
         console.log(productData);
         console.log(productData.img) 
