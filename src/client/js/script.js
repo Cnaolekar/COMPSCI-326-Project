@@ -180,9 +180,9 @@ const URL = "http://localhost:3000";
 async function updateProductDisplay(products) {
     var productWrapper = document.querySelector('.class-grid');
     productWrapper.innerHTML = ''; // Clear current content
-    console.log(products[2])  
-    products.forEach(function(product) {
-        var productData =product
+    console.log(products.rows)  
+    products.rows.forEach(function(product) {
+        var productData =product.doc
         var productDiv = document.createElement('div'); 
         console.log(productData);
         console.log(productData.img) 
