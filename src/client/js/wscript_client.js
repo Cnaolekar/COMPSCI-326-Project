@@ -1,41 +1,31 @@
-const URL = "http://localhost:3000"; // Server URL
+const URL = "http://localhost:4000"; // Server URL
 
 // Function to save workout on the server
 async function saveWorkout() {
-  console.log("Sending save workout request...");
+    console.log("Sending save workout request...");
+    
+    // Get exercise details from the input fields
+    const exerciseName = document.getElementById('exerciseName').value;
+    const weights = parseInt(document.getElementById('weights').value);
+    const sets = parseInt(document.getElementById('sets').value);
+    const reps = parseInt(document.getElementById('reps').value);
   
-  // Get exercise details from the input fields
-  const exerciseName = document.getElementById('exerciseName').value;
-  const weights = parseInt(document.getElementById('weights').value);
-  const sets = parseInt(document.getElementById('sets').value);
-  const reps = parseInt(document.getElementById('reps').value);
+    // Construct query parameters
   
-  // Prepare the request body
-  const requestBody = JSON.stringify({ exerciseName, weights, sets, reps });
-  
-  try {
-    // Send a POST request to the server with exercise details
-    const response = await fetch(`${URL}/read`, {
+    // Send a POST request to the server with exercise details as query parameters
+    fetch(`${URL}/workout`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'
-      },
-      body: requestBody
-    });
-
-    if (!response.ok) {
-      throw new Error('Network response was not ok');
-    }
-    
-    // Parse the JSON response
-    const data = await response.json();
-    console.log("Received response from save workout request:", data);
-    
-    // After successfully saving, create a class card for the exercise
-    createClassCard(exerciseName, weights, sets, reps);
-  } catch (error) {
-    console.error('Error saving workout:', error);
-  }
+      }
+    })
+    .then(response => response.json())
+    .then(data => {
+      console.log("Received response from save workout request:", data);
+      // After successfully saving, create a class card for the exercise
+      createClassCard(exerciseName, weights, sets, reps);
+    })
+    .catch(error => console.error('Error saving workout:', error));
   
 }
 
@@ -65,7 +55,7 @@ function completeWorkout() {
   };
 
   // Send a PUT request to the server with the completed workout data
-  fetch(`${URL}/create`, {
+  fetch(`${URL}/workout`, {
     method: 'PUT',
     headers: {
       'Content-Type': 'application/json'
