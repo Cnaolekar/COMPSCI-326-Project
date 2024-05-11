@@ -1,79 +1,104 @@
-import express from "express";
-import logger from "morgan";
-import bodyParser from "body-parser";
-import * as db from "./srcipt_db.js";
-
-const headerFields = { "Content-Type": "text/html" };
-
-async function saveWorkout(req, res) {
-    console.log("Received POST request to save workout:", req.body);
-
-    const { exerciseName, weights, sets, reps } = req.body;
-
-    const workout = {
-        _id: new Date().toISOString(),
-        exerciseName: exerciseName,
-        weights: weights,
-        sets: sets,
-        reps: reps
-    };
-
-    try {
-        const response = await db.put(workout);
-        console.log('Workout saved successfully:', response);
-        res.status(200).send('Workout saved successfully');
-    } catch (error) {
-        console.error('Error saving workout:', error);
-        res.status(500).send('Error saving workout');
-    }
-}
-
-// Function to complete workout
-async function completeWorkout(req, res) {
-    console.log("Received POST request to complete workout:", req.body);
-
-    const workoutData = req.body;
-
-    try {
-        const response = await db.put(workoutData);
-        console.log('Workout completed and saved successfully:', response);
-        res.status(200).send('Workout completed and saved successfully');
-    } catch (error) {
-        console.error('Error completing and saving workout:', error);
-        res.status(500).send('Error completing and saving workout');
-    }
-}
+import express from 'express';
+import bodyParser from 'body-parser';
+import PouchDB from 'pouchdb';
+import logger from 'morgan';
+import cors from 'cors';
 
 const app = express();
+const db = new PouchDB('workouts');
 const port = 4000;
 
-app.use(logger("dev"));
-app.use(bodyParser.json());
+
+
+
+app.use(logger('dev'));
+app.use(cors());
+app.use(bodyParser.json()); 
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
-app.use(express.static("src/client"));
+app.use(express.static("src/client")); 
 
-const MethodNotAllowedHandler = async (request, response) => {
-    response.status(405).type('text/plain').send('Method Not Allowed');
-};
 
-// Define routes using app.route()
-app.route('/workout')
-    .post((req, res) => {
-        const item = req.body;
-        console.log("server.js - ", item);
-        saveWorkout(req, res); // Call the saveWorkout handler
-    })
-    .put((req, res) => {
-        const item = req.body;
-        console.log("server.js - ", item);
-        completeWorkout(req, res); // Call the completeWorkout handler
-    })
-    .all(MethodNotAllowedHandler); // Handle other HTTP methods with MethodNotAllowedHandler
+app.post('/saveWorkout', async (req, res) => {
+    try {
+        const workout = {
+            _id: new Date().toISOString(),
+            ...req.body
+        };
+        const result = await db.put(workout);
+        res.status(201).json({ success: true, message: "Workout saved successfully", result });
+    } catch (error) {
+        console.error('Error saving workout:', error);
+        res.status(500).json({ success: false, message: "Error saving workout", error });
+    }
+});
+
+
+app.post('/completeWorkout', async (req, res) => {
+  try {
+      const workoutData = {
+          _id: new Date().toISOString(), 
+          date: new Date().toISOString(),
+          exercises: req.body.exercises 
+      };
+      const result = await db.put(workoutData);  
+      res.status(201).json({ success: true, message: "Workout saved successfully", result });
+  } catch (error) {
+      console.error('Error saving complete workout:', error);
+      res.status(500).json({ success: false, message: "Error saving workout", error });
+  }
+});
+
+app.get('/getWorkouts', async (req, res) => {
+  try {
+      const result = await db.allDocs({ include_docs: true });
+      if (result.rows && result.rows.length > 0) {
+          const workouts = result.rows.map(row => row.doc);
+          console.log("Sending workouts: ", workouts);
+          res.status(200).json(workouts);
+      } else {
+          console.log("No workouts found.");
+          res.status(404).json({ message: "No workouts found" });
+      }
+  } catch (error) {
+      console.error('Error retrieving workouts:', error);
+      res.status(500).json({ success: false, message: "Error retrieving workouts", error });
+  }
+});
+
+app.delete('/clearWorkouts', async (req, res) => {
+  try {
+      const allDocs = await db.allDocs();
+      const deletions = allDocs.rows.map(doc => {
+          return { _id: doc.id, _rev: doc.value.rev, _deleted: true };
+      });
+      const response = await db.bulkDocs(deletions);
+      res.status(200).json({ success: true, message: "All workouts cleared", response });
+  } catch (error) {
+      console.error('Error clearing workouts:', error);
+      res.status(500).json({ success: false, message: "Failed to clear workouts", error });
+  }
+});
+
+
+
+
+
+
+app.use((req, res, next) => {
+    if (!['GET', 'POST', 'DELETE'].includes(req.method)) {
+        res.status(405).type('text/plain').send('Method Not Allowed');
+    } else {
+        next();
+    }
+});
+
+
+app.use((req, res) => {
+    res.status(404).send("Resource not found");
+});
 
 
 app.listen(port, () => {
-    console.log(`Server is running on port ${port}`);
+    console.log(`Server running on http://localhost:${port}`);
 });
-
-export default app; // Export the app for testing purposes
