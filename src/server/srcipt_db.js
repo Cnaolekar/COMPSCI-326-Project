@@ -153,6 +153,7 @@ export async function insertData() {
   });
 }
 
+
 // export async function filterbyCategory(category,days){
 //     try {
 //         // Fetch all documents, including their details

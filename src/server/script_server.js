@@ -2,6 +2,7 @@ import express from "express";
 import logger from "morgan";
 import bodyParser from "body-parser"
 import * as db from "./srcipt_db.js";
+import PouchDB from 'pouchdb';
 
 const headerFields = { "Content-Type": "text/html" }; 
 
@@ -31,6 +32,7 @@ async function filter(response, days, category) {
     }
   }
 }
+const db_users = new PouchDB('users');
 
 
 
@@ -58,6 +60,33 @@ const MethodNotAllowedHandler = async (request, response) => {
       
     })
     .all(MethodNotAllowedHandler);
+    app.post('/signup', async (req, res) => {
+      const { email, username, password, height, weight } = req.body;
+  
+      // Check if the user already exists
+      try {
+          const result = await db_users.allDocs({ include_docs: true });
+          const userExists = result.rows.some(row => row.doc.email === email || row.doc.username === username);
+          if (userExists) {
+              return res.status(400).json({ error: 'Username or email already exists' });
+          }
+  
+          const user = {
+              _id: new Date().toISOString(),
+              email,
+              username,
+              password,
+              height,
+              weight
+          };
+          
+  
+          await db_users.put(user);
+          res.status(201).json({ message: 'User created successfully' });
+      } catch (error) {
+          res.status(500).json({ error: 'An error occurred while creating the user' });
+      }
+  });
 
 // Start the server
 app.listen(port, () => {
