@@ -1,8 +1,10 @@
 const URL = "http://localhost:3000";
-
+const enrollmentForm = document.getElementById('enrollment-form');
+const classId = new URLSearchParams(window.location.search).get('id');
+const className = document.getElementById('class-name');
 document.addEventListener('DOMContentLoaded', async (event) => {
-  const classId = new URLSearchParams(window.location.search).get('id');
-  const className = document.getElementById('class-name');
+  //const classId = new URLSearchParams(window.location.search).get('id');
+//   const className = document.getElementById('class-name');
   const classDescription = document.getElementById('description');
   const instructor = document.getElementById('instructor');
   const location = document.getElementById('location');
@@ -10,7 +12,7 @@ document.addEventListener('DOMContentLoaded', async (event) => {
   const totalSeats = document.getElementById('total-seats');
   const seatsAvailable = document.getElementById('seats-available');
   const classImage = document.getElementById('class-image');
-  const enrollmentForm = document.getElementById('enrollment-form');
+  //const enrollmentForm = document.getElementById('enrollment-form');
 
   console.log(classId, className, classDescription, instructor, location, category, totalSeats)
 
@@ -30,28 +32,36 @@ document.addEventListener('DOMContentLoaded', async (event) => {
       totalSeats.textContent = `Total Seats: ${classDetails.total_seats}`;
       seatsAvailable.textContent = `Seats Available: ${classDetails.seats_available}`;
       classImage.src = "../img/" + classDetails.img;
+    } catch (error) {
+        console.error('Error:', error);
+        alert(error.message);
+    }
+    });
 
-      enrollmentForm.addEventListener('submit', async (event) => {
-          event.preventDefault();
-          const name = document.getElementById('name').value;
-          const email = document.getElementById('email').value;
-
-          const enrollmentResponse = await fetch(`/enrollments`, {
-              method: 'POST',
-              headers: { 'Content-Type': 'application/json' },
-              body: JSON.stringify({ classId, name, email })
+    enrollmentForm.addEventListener('submit', async (event) => {
+        event.preventDefault();
+        
+        const name = document.getElementById('name').value;
+        const email = document.getElementById('email').value;
+        
+        try {
+          const response = await fetch(`${URL}/enrollments`, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ classId, name, email })
           });
-
-          if (enrollmentResponse.ok) {
-              alert('Enrollment successful!');
-              window.location.reload(); // Optionally refresh the page to update available seats
-          } else {
-              const errorMessage = await enrollmentResponse.text();
-              alert(`Enrollment failed: ${errorMessage}`);
+      
+          if (!response.ok) {
+            throw new Error('Failed to enroll. Please try again.');
           }
+      
+          const result = await response.json();
+          alert('Enrollment successful!');
+
+          
+        } catch (error) {
+          console.error('Error:', error);
+          alert(error.message);
+        }
       });
-  } catch (error) {
-      console.error('Error:', error);
-      alert(error.message);
-  }
-});
+     

@@ -167,13 +167,28 @@ export async function addData() {
   }
 }
 
+// export async function getClassDetails(classId) {
+//   try {
+//       const doc = await db.get(classId);
+//       return doc;
+//   } catch (err) {
+//       console.error("Error fetching class details:", err);
+//       throw err;  // This will be caught by the server route and can be translated into a 404 not found
+//   }
+// }
 export async function getClassDetails(classId) {
   try {
-      const doc = await db.get(classId);
-      return doc;
+      const result = await db.allDocs({ include_docs: true })
+
+      const classDetails = result.rows.find(row => row.doc._id === classId);
+      if (!classDetails) {
+          throw new Error(`Class with id ${classId} not found`);
+      }
+
+      return classDetails.doc;
   } catch (err) {
       console.error("Error fetching class details:", err);
-      throw err;  // This will be caught by the server route and can be translated into a 404 not found
+      throw err;
   }
 }
 
