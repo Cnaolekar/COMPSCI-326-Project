@@ -153,6 +153,29 @@ export async function insertData() {
   });
 }
 
+export async function addData() {
+  try {
+      const existingData = await db.allDocs({include_docs: true, limit: 1}); 
+      if (existingData.total_rows === 0) {
+          const response = await db.bulkDocs(classData);
+          console.log("Data inserted successfully:", response);
+      } else {
+          console.log("Data already exists. No need to insert.");
+      }
+  } catch (error) {
+      console.error("Error inserting data into DB:", error);
+  }
+}
+
+export async function getClassDetails(classId) {
+  try {
+      const doc = await db.get(classId);
+      return doc;
+  } catch (err) {
+      console.error("Error fetching class details:", err);
+      throw err;  // This will be caught by the server route and can be translated into a 404 not found
+  }
+}
 
 // export async function filterbyCategory(category,days){
 //     try {
@@ -199,3 +222,4 @@ export async function filterbyCategory(days, category){
       console.error('Error fetching products by category:', err);
   }
 }
+

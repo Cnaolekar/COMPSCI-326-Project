@@ -87,38 +87,50 @@ const MethodNotAllowedHandler = async (request, response) => {
           res.status(500).json({ error: 'An error occurred while creating the user' });
       }
   });
-  app.post('/login', async (req, res) => {
-    const { email, password } = req.body;
 
+  app.route("/classes").get(async (req, res) => {
     try {
-        const result = await db_users.allDocs({ include_docs: true });
-        const user = result.rows.find(row => row.doc.email === email);
-
-        if (!user || user.doc.password !== password) {
-            return res.status(401).json({ error: 'Invalid email or password' });
+        const id = req.query.id; // Access id as a query parameter
+        if (!id) {
+            return res.status(400).send('Class ID is required');
         }
-
-        res.status(200).json({ message: 'Login successful' });
+        const classDetails = await db.getClassDetails(id);
+        res.json(classDetails);
     } catch (error) {
-        res.status(500).json({ error: 'An error occurred while logging in' });
+        console.error('Class not found', error);
+        res.status(404).send('Class not found');
     }
 });
-app.get('/profile', async (req, res) => {
-  const { email } = req.query;
 
-  try {
-      const result = await db_users.allDocs({ include_docs: true });
-      const user = result.rows.find(row => row.doc.email === email);
+const enrollmentDB = new PouchDB('enrollments');
 
-      if (!user) {
-          return res.status(404).json({ error: 'User not found' });
-      }
+app.post('/enrollments', async (req, res) => {
+    const { classId, name, email } = req.body;
+    try {
+        const classDetails = await db.getClassDetails(classId);
+        if (classDetails.seats_available > 0) {
+            classDetails.seats_available -= 1;
+            await db.updateClassDetails(classDetails);
 
-      res.status(200).json(user.doc);
-  } catch (error) {
-      res.status(500).json({ error: 'An error occurred while fetching the user profile' });
-  }
+            const enrollmentData = {
+                _id: `enrollment_${Date.now()}`,
+                classId,
+                name,
+                email
+            };
+            await enrollmentDB.put(enrollmentData);
+            res.json({ message: 'Enrollment successful!' });
+        } else {
+            res.status(400).send('Class is full. Cannot enroll.');
+        }
+    } catch (error) {
+        console.error('Error processing request', error);
+        res.status(500).send('Error processing request');
+    }
 });
+
+
+
 
 // Start the server
 app.listen(port, () => {
