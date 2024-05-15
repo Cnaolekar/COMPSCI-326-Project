@@ -192,6 +192,18 @@ export async function getClassDetails(classId) {
   }
 }
 
+export async function updateClassDetails(classDetails) {
+  try {
+    const existingDoc = await db.get(classDetails._id);
+    const updatedDoc = { ...existingDoc, ...classDetails };
+    await db.put(updatedDoc);
+    return updatedDoc;
+  } catch (error) {
+    console.error('Error updating class details:', error);
+    throw error;
+  }
+}
+
 // export async function filterbyCategory(category,days){
 //     try {
 //         // Fetch all documents, including their details

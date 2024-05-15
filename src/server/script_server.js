@@ -63,7 +63,7 @@ const MethodNotAllowedHandler = async (request, response) => {
     app.post('/signup', async (req, res) => {
       const { email, username, password, height, weight } = req.body;
   
-      // Check if the user already exists
+      // to check if the user already exists
       try {
           const result = await db_users.allDocs({ include_docs: true });
           const userExists = result.rows.some(row => row.doc.email === email || row.doc.username === username);
@@ -152,27 +152,41 @@ app.post('/enrollments', async (req, res) => {
     return res.status(400).json({ error: 'Missing required fields' });
   }
 
+
   try {
+    const userCheck = await enrollmentDB.allDocs({ include_docs: true });
+          const userExists = userCheck.rows.some(row => row.doc.email === email);
+          if (userExists) {
+            return res.status(400).json({ error: 'Username or email already exists' });
+        }
+        
+
     const enrollment = {
       _id: new Date().toISOString(),
       classId,
       name,
       email
     };
-
+    
+    console.log('Enrollment data:', enrollment);
     const result = await enrollmentDB.put(enrollment);
+
+    const classDetails = await db.getClassDetails(classId);
+    if (classDetails) {
+      classDetails.seats_available -= 1;
+      await db.updateClassDetails(classDetails);
+    }
     
     res.status(201).json(result);
   } catch (error) {
     console.error('Error saving enrollment:', error);
-    res.status(500).json({ error: 'Internal Server Error' });
+    res.status(500).json({ error: 'An error occurred while creating the user' });
   }
 });
 
 
 
 
-// Start the server
 app.listen(port, () => {
     console.log(`Server started on port ${port}`);
 });

@@ -52,9 +52,9 @@ document.addEventListener('DOMContentLoaded', async (event) => {
           });
       
           if (!response.ok) {
-            throw new Error('Failed to enroll. Please try again.');
+            throw new Error('Username or email already exists');
           }
-      
+          
           const result = await response.json();
           alert('Enrollment successful!');
 
