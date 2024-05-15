@@ -1,4 +1,4 @@
-const URL = "http://localhost:4000";
+const URL = "http://localhost:3000";
 
 function saveWorkout() {
   var exerciseName = document.getElementById('exerciseName').value;

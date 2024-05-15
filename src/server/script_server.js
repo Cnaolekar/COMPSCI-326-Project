@@ -261,6 +261,68 @@ app.put('/updateHeight', async (req, res) => {
   }
 });
 
+const workoutsDB = new PouchDB('workouts');
+app.post('/saveWorkout', async (req, res) => {
+  try {
+      const workout = {
+          _id: new Date().toISOString(),
+          ...req.body
+      };
+      const result = await workoutsDB.put(workout);
+      res.status(201).json({ success: true, message: "Workout saved successfully", result });
+  } catch (error) {
+      console.error('Error saving workout:', error);
+      res.status(500).json({ success: false, message: "Error saving workout", error });
+  }
+});
+
+
+app.post('/completeWorkout', async (req, res) => {
+try {
+    const workoutData = {
+        _id: new Date().toISOString(), 
+        date: new Date().toISOString(),
+        exercises: req.body.exercises 
+    };
+    const result = await workoutsDB.put(workoutData);  
+    res.status(201).json({ success: true, message: "Workout saved successfully", result });
+} catch (error) {
+    console.error('Error saving complete workout:', error);
+    res.status(500).json({ success: false, message: "Error saving workout", error });
+}
+});
+
+app.route('/getWorkouts').get(async (req, res) => {
+try {
+    const result = await workoutsDB.allDocs({ include_docs: true });
+    if (result.rows && result.rows.length > 0) {
+        const workouts = result.rows.map(row => row.doc);
+        console.log("Sending workouts: ", workouts);
+        res.status(200).json(workouts);
+    } else {
+        console.log("No workouts found.");
+        res.status(404).json({ message: "No workouts found" });
+    }
+} catch (error) {
+    console.error('Error retrieving workouts:', error);
+    res.status(500).json({ success: false, message: "Error retrieving workouts", error });
+}
+});
+
+app.delete('/clearWorkouts', async (req, res) => {
+try {
+    const allDocs = await workoutsDB.allDocs();
+    const deletions = allDocs.rows.map(doc => {
+        return { _id: doc.id, _rev: doc.value.rev, _deleted: true };
+    });
+    const response = await workoutsDB.bulkDocs(deletions);
+    res.status(200).json({ success: true, message: "All workouts cleared", response });
+} catch (error) {
+    console.error('Error clearing workouts:', error);
+    res.status(500).json({ success: false, message: "Failed to clear workouts", error });
+}
+});
+
 
 app.listen(port, () => {
     console.log(`Server started on port ${port}`);

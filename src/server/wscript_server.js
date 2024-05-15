@@ -5,7 +5,7 @@ import logger from 'morgan';
 import cors from 'cors';
 
 const app = express();
-const db = new PouchDB('workouts');
+const workoutsDB = new PouchDB('workouts');
 const port = 4000;
 
 
@@ -25,7 +25,7 @@ app.post('/saveWorkout', async (req, res) => {
             _id: new Date().toISOString(),
             ...req.body
         };
-        const result = await db.put(workout);
+        const result = await workoutsDB.put(workout);
         res.status(201).json({ success: true, message: "Workout saved successfully", result });
     } catch (error) {
         console.error('Error saving workout:', error);
@@ -41,7 +41,7 @@ app.post('/completeWorkout', async (req, res) => {
           date: new Date().toISOString(),
           exercises: req.body.exercises 
       };
-      const result = await db.put(workoutData);  
+      const result = await workoutsDB.put(workoutData);  
       res.status(201).json({ success: true, message: "Workout saved successfully", result });
   } catch (error) {
       console.error('Error saving complete workout:', error);
@@ -49,9 +49,9 @@ app.post('/completeWorkout', async (req, res) => {
   }
 });
 
-app.get('/getWorkouts', async (req, res) => {
+app.route('/getWorkouts').get(async (req, res) => {
   try {
-      const result = await db.allDocs({ include_docs: true });
+      const result = await workoutsDB.allDocs({ include_docs: true });
       if (result.rows && result.rows.length > 0) {
           const workouts = result.rows.map(row => row.doc);
           console.log("Sending workouts: ", workouts);
@@ -68,11 +68,11 @@ app.get('/getWorkouts', async (req, res) => {
 
 app.delete('/clearWorkouts', async (req, res) => {
   try {
-      const allDocs = await db.allDocs();
+      const allDocs = await workoutsDB.allDocs();
       const deletions = allDocs.rows.map(doc => {
           return { _id: doc.id, _rev: doc.value.rev, _deleted: true };
       });
-      const response = await db.bulkDocs(deletions);
+      const response = await workoutsDB.bulkDocs(deletions);
       res.status(200).json({ success: true, message: "All workouts cleared", response });
   } catch (error) {
       console.error('Error clearing workouts:', error);
