@@ -57,6 +57,7 @@ document.addEventListener('DOMContentLoaded', async (event) => {
           
           const result = await response.json();
           alert('Enrollment successful!');
+          window.location.href = '../html/classes.html';
 
           
         } catch (error) {
