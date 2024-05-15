@@ -84,10 +84,16 @@
       <!-- Weight Box -->
       <div class="flex-1 bg-white shadow rounded p-4" id="weightbox">
         <strong>Weight (kg):</strong> <span id="weightDisplay"></span>
+        <input type="number" id="weightInput" class="hidden border rounded px-2 py-1" />
+        <button class="ml-2 bg-blue-500 text-white rounded px-2 py-1" onclick="editWeight()">Edit</button>
+        <button class="ml-2 bg-green-500 text-white rounded px-2 py-1 hidden" id="saveWeightButton" onclick="saveWeight()">Save</button>
       </div>
       <!-- Height Box -->
       <div class="flex-1 bg-white shadow rounded p-4" id="heightbox">
         <strong>Height (cm):</strong> <span id="heightDisplay"></span>
+        <input type="number" id="heightInput" class="hidden border rounded px-2 py-1" />
+        <button class="ml-2 bg-blue-500 text-white rounded px-2 py-1" onclick="editHeight()">Edit</button>
+        <button class="ml-2 bg-green-500 text-white rounded px-2 py-1 hidden" id="saveHeightButton" onclick="saveHeight()">Save</button>
       </div>
       <!-- Workout Plan Box -->
       <div class="flex-1 bg-white shadow rounded p-4 text-center">
@@ -103,3 +109,4 @@
   </div>
 </body>
 </html>
+

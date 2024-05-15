@@ -217,7 +217,49 @@ app.post('/enrollments', async (req, res) => {
 });
 
 
+app.put('/updateWeight', async (req, res) => {
+  const { weight, email } = req.body;
 
+  try {
+    const result = await db_users.allDocs({ include_docs: true });
+    const user = result.rows.find(row => row.doc.email === email);
+
+    if (!user) {
+      return res.status(404).json({ success: false, error: 'User not found' });
+    }
+
+    const userDoc = user.doc;
+    userDoc.weight = weight;
+    await db_users.put(userDoc);
+
+    res.json({ success: true });
+  } catch (error) {
+    console.error('Error updating weight:', error); // Log the error
+    res.status(500).json({ success: false, error: 'Failed to update weight' });
+  }
+});
+
+app.put('/updateHeight', async (req, res) => {
+  const { height, email } = req.body;
+
+  try {
+    const result = await db_users.allDocs({ include_docs: true });
+    const user = result.rows.find(row => row.doc.email === email);
+
+    if (!user) {
+      return res.status(404).json({ success: false, error: 'User not found' });
+    }
+
+    const userDoc = user.doc;
+    userDoc.height = height;
+    await db_users.put(userDoc);
+
+    res.json({ success: true });
+  } catch (error) {
+    console.error('Error updating height:', error); // Log the error
+    res.status(500).json({ success: false, error: 'Failed to update height' });
+  }
+});
 
 
 app.listen(port, () => {

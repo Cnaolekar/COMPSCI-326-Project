@@ -111,3 +111,67 @@ document.addEventListener('DOMContentLoaded', async () => {
         alert('Failed to load user data');
     }
 });
+function getEmailFromLocalStorage() {
+    return localStorage.getItem('userEmail');
+  }
+  
+  function editWeight() {
+    document.getElementById('weightDisplay').classList.add('hidden');
+    document.getElementById('weightInput').classList.remove('hidden');
+    document.getElementById('saveWeightButton').classList.remove('hidden');
+  }
+  
+  function saveWeight() {
+    const weight = document.getElementById('weightInput').value;
+    const email = getEmailFromLocalStorage();
+  
+    fetch('/updateWeight', {
+      method: 'PUT',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ weight, email }),
+    })
+    .then(response => response.json())
+    .then(data => {
+      if (data.success) {
+        document.getElementById('weightDisplay').innerText = weight;
+        document.getElementById('weightDisplay').classList.remove('hidden');
+        document.getElementById('weightInput').classList.add('hidden');
+        document.getElementById('saveWeightButton').classList.add('hidden');
+      } else {
+        alert('Failed to update weight');
+      }
+    });
+  }
+  
+  function editHeight() {
+    document.getElementById('heightDisplay').classList.add('hidden');
+    document.getElementById('heightInput').classList.remove('hidden');
+    document.getElementById('saveHeightButton').classList.remove('hidden');
+  }
+  
+  function saveHeight() {
+    const height = document.getElementById('heightInput').value;
+    const email = getEmailFromLocalStorage();
+  
+    fetch('/updateHeight', {
+      method: 'PUT',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ height, email }),
+    })
+    .then(response => response.json())
+    .then(data => {
+      if (data.success) {
+        document.getElementById('heightDisplay').innerText = height;
+        document.getElementById('heightDisplay').classList.remove('hidden');
+        document.getElementById('heightInput').classList.add('hidden');
+        document.getElementById('saveHeightButton').classList.add('hidden');
+      } else {
+        alert('Failed to update height');
+      }
+    });
+  }
+  
