@@ -152,37 +152,70 @@ app.post('/enrollments', async (req, res) => {
     return res.status(400).json({ error: 'Missing required fields' });
   }
 
-
   try {
-    const userCheck = await enrollmentDB.allDocs({ include_docs: true });
-          const userExists = userCheck.rows.some(row => row.doc.email === email);
-          if (userExists) {
-            return res.status(400).json({ error: 'Username or email already exists' });
-        }
-        
+    // Check if the user is already enrolled in the same class with the same email
+    const existingEnrollments = await enrollmentDB.allDocs({
+      include_docs: true,
+      startkey: `${classId}_${email}`,
+      endkey: `${classId}_${email}\uffff`
+    });
 
-    const enrollment = {
-      _id: new Date().toISOString(),
-      classId,
-      name,
-      email
-    };
-    
-    console.log('Enrollment data:', enrollment);
-    const result = await enrollmentDB.put(enrollment);
-
-    const classDetails = await db.getClassDetails(classId);
-    if (classDetails) {
-      classDetails.seats_available -= 1;
-      await db.updateClassDetails(classDetails);
+    if (existingEnrollments.rows.length > 0) {
+      return res.status(400).json({ error: 'User is already enrolled in this class' });
     }
-    
-    res.status(201).json(result);
+
+    // Check if the user is already enrolled in any class with the same email
+    const userEnrollments = await enrollmentDB.allDocs({
+      include_docs: true,
+      startkey: `${email}_`,
+      endkey: `${email}_\uffff` //using unique Unicode character identifier to do matching
+    });
+
+    if (userEnrollments.rows.length > 0) {
+      //If User is already enrolled in some class,still allow them to enroll in a different class
+      const enrollment = {
+        _id: `${classId}_${email}`, // Unique ID for the enrollment
+        classId,
+        name,
+        email
+      };
+      
+      console.log('Enrollment data:', enrollment);
+      const result = await enrollmentDB.put(enrollment);
+
+      const classDetails = await db.getClassDetails(classId);
+      if (classDetails) {
+        classDetails.seats_available -= 1;
+        await db.updateClassDetails(classDetails);
+      }
+      
+      return res.status(201).json(result);
+    } else {
+      //If User is not enrolled in any class, allow enrollment
+      const enrollment = {
+        _id: `${classId}_${email}`, // Unique ID Identifier for the enrollment
+        classId,
+        name,
+        email
+      };
+      
+      console.log('Enrollment data:', enrollment);
+      const result = await enrollmentDB.put(enrollment);
+
+      const classDetails = await db.getClassDetails(classId);
+      if (classDetails) {
+        classDetails.seats_available -= 1;
+        await db.updateClassDetails(classDetails);
+      }
+      
+      return res.status(201).json(result);
+    }
   } catch (error) {
     console.error('Error saving enrollment:', error);
-    res.status(500).json({ error: 'An error occurred while creating the user' });
+    res.status(500).json({ error: 'Internal Server Error' });
   }
 });
+
 
 
 
